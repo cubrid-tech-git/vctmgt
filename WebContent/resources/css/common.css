@@ -1,0 +1,76 @@
+.popupTitle {
+	text-align: center;
+}
+
+.infoTbl {
+	text-align: center;
+	border-collapse: collapse;
+	border: 1px solid grey;
+	width: 880px;
+}
+
+.userTbl {
+	text-align: center;
+	border-collapse: collapse;
+	border: 1px solid grey;
+}
+
+.titleTr {
+	border: 1px solid grey;
+	padding: 0;
+	height: 25px;
+	font-weight: bold;
+	color: white;
+	background-color: #336699;
+}
+
+.titleTd {
+	border: 1px solid grey;
+	padding: 0;
+}
+
+.contentTr{
+	border: 1px solid grey;
+	padding: 0;
+	height: 25px;
+}
+
+.contentTd {
+	border: 1px solid grey;
+	padding: 0;
+	height: 25px;
+}
+
+#selectArea {
+	position: absolute; top: 80px; right: 30px;
+}
+
+#selectCostArea {
+	position: relative; top : 55px; right: -752px; 
+}
+
+#mgtCheck {
+	position: relative; top : 70px; right: -682px;
+}
+
+.trackingTd {
+	border: 1px solid grey;
+	padding: 0;
+}
+
+.askTitle {
+	border: 1px solid grey;
+	padding: 0;
+	height: 25px;
+	font-weight: bold;
+	color: white;
+	background-color: #336699;
+}
+
+#rvctBtnArea {
+	position: absolute; top: 260px; right: 30px;
+}
+
+#confirmPastRvctBtnArea {
+	position: relative; top : 55px; right: -728px; 
+}

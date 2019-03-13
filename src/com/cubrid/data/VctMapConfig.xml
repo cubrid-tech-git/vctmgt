@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<properties resource="com/cubrid/data/db.properties" />
+	
+	<typeAliases>
+		<typeAlias type="com.cubrid.vo.UserVo" alias="userVo"/>
+		<typeAlias type="com.cubrid.vo.VctVo" alias="vctVo"/>
+		<typeAlias type="com.cubrid.vo.RVConfirmVo" alias="rVctVo"/>
+		<typeAlias type="com.cubrid.vo.VConfirmVo" alias="vctConfirmVo"/>
+		<typeAlias type="com.cubrid.vo.CostStaticsVo" alias="costVo"/>
+	</typeAliases>
+	
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}"/>
+				<property name="url" value="${url}"/>
+				<property name="username" value="${dbuser}"/>
+				<property name="password" value="${dbpass}"/>
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<mappers>
+		<mapper resource="com/cubrid/data/vctMapper.xml"/>
+	</mappers>
+	
+</configuration>

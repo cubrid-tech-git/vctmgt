@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="vct">
+
+
+	<!-- 분기 넘어갈 시 문제 해결 위한 임시 쿼리 -->
+	<select id="tmpselectAllVct" resultType="vctVo" parameterType="hashmap">
+		SELECT U.ename, V.vctcount AS vctcount, (SELECT SUM(NVL(IV.vctcount, 0.0)) FROM vct IV WHERE V.eno = IV.eno AND IV.vct_type = 'R' AND IV.enddate IN (#{curr_end_quater}, #{next_end_quater})) vctcount_tmp
+FROM vct V JOIN [user] U ON V.eno = U.eno
+WHERE (V.regdate = #{aRegdate} AND V.vct_type='A')  
+		<if test="eno!=0">
+			AND V.eno = #{eno}
+		</if>
+		ORDER BY V.eno ASC;
+	</select>
+
+	<!-- (원래 쿼리) summary 페이지에서 남은 휴가 잔량을 표시하는 쿼리 -->
+	<select id="selectAllVct" resultType="vctVo" parameterType="hashmap">
+		SELECT U.ename, V.vctcount AS vctcount, (SELECT SUM(NVL(IV.vctcount, 0.0)) FROM vct IV WHERE V.eno = IV.eno AND IV.vct_type = 'R' AND IV.enddate >= #{rEnddate}) vctcount_tmp 
+		FROM vct V JOIN [user] U ON V.eno = U.eno
+		WHERE (V.regdate = #{aRegdate} AND V.vct_type='A')
+		<if test="eno!=0">
+			AND V.eno = #{eno}
+		</if>
+		ORDER BY U.ename ASC;
+	</select>
+	
+	<!-- 대체휴가 등록 신청을 insert 하는 쿼리 -->
+	<insert id="insertRvctConfirm" parameterType="rVctVo">
+		INSERT INTO rvct_confirm (eno, pkey, site, work_date, start_type, work_end_date, end_type, work_time, reason, regdate) 
+		VALUES (#{eno}, #{pkey}, #{site}, #{work_date}, #{start_type}, #{work_end_date}, #{end_type}, #{work_time}, #{reason}, SYSDATETIME);
+	</insert>
+
+	<!-- 대체휴가 등록 신청에 대한 정보를 조회하는 쿼리 -->
+	<select id="selectRvctConfirm" resultType="rVctVo" parameterType="hashmap">
+		SELECT r.id, r.eno, r.site, u.ename, r.pkey, r.status, TO_CHAR(r.work_date, 'YY-MM-DD HH24:MI') AS work_date, TO_CHAR(r.work_end_date, 'YY-MM-DD HH24:MI') AS work_end_date, r.start_type, r.end_type, r.work_time, r.reason, TO_CHAR(r.regdate, 'YY-MM-DD HH24:MI') AS regdate
+		FROM rvct_confirm AS r JOIN [user] AS u ON r.eno = u.eno JOIN admin AS a ON u.dno = a.dno
+		<choose>
+			<!-- 관리자 (해당분기) -->
+			<when test="confirmType eq 'M'.toString()">
+				WHERE a.eno = #{confirmEno} AND r.status = 'W' AND work_date >= #{work_date}
+			</when>
+			<!-- 관리자 (해당분기) -->
+			<when test="confirmType eq 'A'.toString()">
+				WHERE a.eno = #{confirmEno} AND r.status = 'W'
+			</when>				
+			<!-- 일반 사원 -->
+			<when test="confirmType eq 'E'.toString()">
+				WHERE u.eno = #{confirmEno} AND work_date >= #{work_date}
+			</when>
+			<!-- 대체휴가 등록 현황 수정시 -->
+			<when test="confirmType eq 'P'.toString()">
+				WHERE r.id = #{confirmEno}
+			</when>
+		</choose>
+		ORDER BY u.ename, work_date DESC
+	</select>
+	
+	<!-- 대체휴가 등록 신청시 등록된 내용을 삭제하는 쿼리 -->
+	<delete id="rvctConfirmDel" parameterType="vctVo">
+		DELETE FROM [rvct_confirm] where id = #{id}
+	</delete>
+	
+	<!-- 대체휴가 등록 신청에 대한 관리자의 승인 쿼리1 -->
+	<update id="rvctConfirmY1" parameterType="rVctVo">
+		UPDATE rvct_confirm SET [status] = 'Y' WHERE id = ${id}
+	</update>
+	
+	<!-- 대체휴가 등록 신청에 대한 관리자의 승인 쿼리2 -->
+	<select id="rvctConfirmY2" parameterType="rVctVo" resultType="vctVo">
+		<!-- SELECT id, vctcount FROM vct WHERE eno = #{eno} AND vct_type = 'R' and regdate = #{work_date} -->
+		SELECT v.id, v.vctcount, u.ename FROM vct v join [user] u on v.eno = u.eno WHERE v.eno = #{eno} AND v.vct_type = 'R' and v.regdate = #{work_date}
+	</select>
+	
+	<!-- 대체휴가 등록 신청에 대한 관리자의 승인 쿼리3 -->
+	<update id="rvctConfirmY3" parameterType="vctVo">
+		UPDATE vct SET vctcount = ${vctcount} WHERE id = ${id};
+	</update>
+	
+	<!-- 대체휴가 등록 신청시 관리자가 승인 거절하는 쿼리 -->
+	<update id="rvctConfirmN" parameterType="rVctVo">
+		UPDATE rvct_confirm SET [status] = 'N' WHERE id = ${id}
+	</update>
+	
+	<!-- 대체휴가 등록 신청 후 해당 내용을 수정하는 쿼리 -->
+	<update id="updateRvctConfirm" parameterType="rvctVo">
+		UPDATE rvct_confirm SET pkey=#{pkey}, site=#{site}, work_date=#{work_date}, work_end_date=#{work_end_date}, work_time=#{work_time}, reason=#{reason}, regdate=sysdate, [status]=#{status}, start_type=#{start_type}, end_type=#{end_type}
+		WHERE id=#{id}
+	</update>
+	
+	<!-- 대체휴가 default 값은 분기마다 새롭게 갱신 (스케쥴링) schedulingRvct0 ~ 4 -->
+	<select id="schedulingRvct1_1" parameterType="vctVo" resultType="rvctVo">
+		SELECT CAST('0.' || NVL(SUBSTR(TO_CHAR(vctcount), 3, 4), 0) AS float) AS work_time 
+		FROM vct 
+		WHERE eno=#{eno} AND vct_type='R' AND regdate = ADD_MONTHS(#{regdate}, -3)
+	</select>
+	
+	<insert id="schedulingRvct1" parameterType="rvctVo">
+		INSERT INTO vct(vct_type, eno, vctcount, regdate, enddate) VALUES('R', #{eno}, #{work_time}, #{work_date}, #{work_end_date});
+	</insert>
+	
+	<select id="schedulingRvct2" parameterType="string" resultType="vctConfirmVo">
+		SELECT vc.id, vc.vct_type, v.id, vc.status, vc.from_vctdate, vc.to_vctdate, vc.remain_vct_time, vc.vct_time, vc.eno, vc.reason
+		FROM vct_confirm AS vc JOIN vct v ON v.id = vc.vct_id
+		WHERE v.enddate = #{work_end_date} AND v.vct_type = 'R';
+	</select>
+	
+	<update id="schedulingRvct2_1" parameterType="rvctVo">
+		UPDATE vct SET [vctcount] = #{work_time} WHERE [eno] = #{eno} and [regdate] = #{work_date} and [enddate] = #{work_end_date}
+	</update>
+	
+	<update id="schedulingRvct3" parameterType="vctConfirmVo">
+		UPDATE vct_confirm set [status] = 'N' WHERE id = #{id}
+	</update>
+	
+	<update id="schedulingRvct4" parameterType="hashmap">
+		UPDATE rvct_confirm SET [status] = 'N' 
+		WHERE work_date 
+		BETWEEN TO_DATETIME(TO_CHAR(ADD_MONTHS(#{endDate}, -3) , 'YYYY-MM-DD') || ' 00:00:00.000', 'YYYY-MM-DD HH24:MI:SS.FF') 
+			AND TO_DATETIME(TO_CHAR(ADDDATE(DATE'${endDate}', -1), 'YYYY-MM-DD') || ' 23:59:59.999', 'YYYY-MM-DD HH24:MI:SS.FF');
+	</update>
+	
+	<select id="schedulingAvct1" parameterType="string" resultType="vctVo">
+		SELECT v.id, v.eno, u.ename, v.vct_type, v.vctcount, v.regdate, v.enddate 
+		FROM vct v JOIN [user] u ON v.eno = u.eno
+		WHERE vct_type='A' AND enddate = #{endDate};
+	</select>
+	
+	<insert id="schedulingAvct2" parameterType="vctVo">
+		INSERT INTO vct(vct_type, eno, vctcount, regdate, enddate) 
+		VALUES('A', #{eno}, #{vctcount}, #{regdate}, #{enddate})
+	</insert>
+	
+	<update id="schedulingAvct3">
+		UPDATE vct_confirm 
+		SET [status] = 'N', reason='연차휴가 사용 기간 만료로 인한 자동 갱신&lt;br&gt;' || SYSDATETIME || '&lt;br&gt;' 
+		WHERE vct_type = 'A' AND [status] = 'W';
+	</update>
+	
+	<!-- 휴가 신청 전 남은 휴가 잔량을 조회하는 쿼리 -->
+	<select id="selectRemainVct" parameterType="vctVo" resultType="vctVo">
+		SELECT v.id, v.eno, u.dno, u.ename, v.vct_type, v.vctcount, v.regdate, v.enddate
+		FROM vct AS v JOIN [user] AS u ON v.eno = u.eno
+		WHERE v.eno = #{eno} AND v.vct_type = #{vct_type} AND v.regdate = #{regdate}
+	</select>
+	
+	<!-- 휴가 사용을 신청하는 쿼리 -->
+	<insert id="insertVctConfirm" parameterType="vctConfirmVo">
+		INSERT vct_confirm(vct_type, vct_id, from_vctdate, to_vctdate, vct_time, eno, reason)
+		VALUES(#{vct_type}, #{vct_id}, #{from_vctdate}, #{to_vctdate}, #{vct_time}, #{eno}, #{reason})
+	</insert>
+	
+	<!-- 휴가 사용을 신청한 내용을 수정하는 쿼리 -->
+	<update id="regVctUpdate" parameterType="vctConfirmVo">
+		UPDATE vct_confirm SET vct_type = #{vct_type}, vct_id = #{vct_id}, from_vctdate = #{from_vctdate}, to_vctdate = #{to_vctdate}, vct_time = #{vct_time}, reason = #{reason}
+		WHERE id = #{id}
+	</update>
+	
+	<select id="selectVctConfirmForAdmin" parameterType="int" resultType="vctConfirmVo">
+		SELECT c.id, c.vct_type, c.vct_id, c.status, c.from_vctdate, c.to_vctdate, c.vct_time, c.eno, u.ename, c.reason
+		FROM vct_confirm AS c JOIN [user] AS u ON c.eno = u.eno JOIN admin AS a ON u.dno = a.dno
+		WHERE a.eno = #{adminEno} AND c.status = 'W';
+	</select>
+	
+	<!-- 휴가 신청 승인시 첫 번째 조회 SQL -->
+	<select id="selectVctConfirmVctcount" parameterType="int" resultType="vctVo">
+		SELECT id, vct_type, eno, vctcount, regdate, enddate
+		FROM vct
+		WHERE id = #{vctId}
+	</select>
+	
+	<!-- 휴가 신청 승인시 vct, vct_confirm UPDATE -->
+	<update id="updateVctConfirmVctcount" parameterType="vctConfirmVo">
+		UPDATE vct SET vctcount = #{vct_time} WHERE id = #{vct_id};
+		UPDATE vct_confirm SET [status] = 'Y', remain_vct_time = (SELECT vctcount FROM vct WHERE id = #{vct_id}) 
+		WHERE id = #{id}
+	</update>
+	
+	<!-- 휴가 신청 승인시 vct_confirm 테이블만 UPDATE하는 쿼리 -->
+	<update id="updateVctConfirmOnlyVct_confirm" parameterType="vctConfirmVo">
+		UPDATE vct_confirm SET [status] = 'Y' WHERE id = #{id}
+	</update>
+	
+	<!-- Never Used... -->
+	<insert id="vctUsedHistory" parameterType="vctConfirmVo">
+		INSERT INTO history (eno, vct_type, vctcount, reason, from_vctdate, to_vctdate, approvaldate)
+		VALUES(#{eno}, #{vct_type}, #{vct_time}, #{reason}, #{from_vctdate}, ${to_vctdate}, SYSDATE)
+	</insert>
+	
+	<select id="selectConfirmedVctInfo" parameterType="String" resultType="vctConfirmVo">
+		SELECT u.ename, v.vct_type, v.vct_time, v.from_vctdate, v.to_vctdate, v.reason, v.status
+		FROM [user] u JOIN [vct_confirm] v ON u.eno = v.eno
+		WHERE v.status = 'Y'
+		AND (v.from_vctdate BETWEEN TO_DATE(#{date} || '-01', 'YYYY-MM-DD') AND LAST_DAY(#{date} || '-01') 
+			OR v.to_vctdate BETWEEN TO_DATE(#{date} || '-01', 'YYYY-MM-DD') AND LAST_DAY(#{date} || '-01'))
+		ORDER BY v.from_vctdate;	
+	</select>
+	
+	<!-- 대체휴가 수당 가져오는 SQL -->
+	<select id="selectRvctCostInfo" parameterType="String" resultType="vctVo">
+		SELECT u.eno, u.dno, u.ename, v.vctcount, TO_CHAR(FLOOR(v.vctcount) * 10000) || '원' as [cost]
+		FROM vct v JOIN [user] u ON v.eno = u.eno 
+		WHERE v.vct_type = 'R' AND v.enddate = #{date}
+		ORDER BY u.ename;
+	</select>
+	
+	<!-- 대체휴가 수당 페이지 통계 -->
+	<select id="selectRvctCostDetailStatics" parameterType="hashmap" resultType="costVo">
+		<!-- SELECT SUM(c.vct_time) as [used_time], v.vctcount as [remain_time]
+		FROM vct v JOIN vct_confirm c ON v.eno = c.eno
+		WHERE c.eno = #{eno} AND c.vct_type = 'R' AND v.regdate = #{startDate}
+		GROUP BY v.vctcount -->
+		SELECT NVL( 
+			(SELECT SUM(vct_time) 
+			FROM vct_confirm b 
+			WHERE b.eno = v.eno AND b.vct_type = 'R' AND b.from_vctdate BETWEEN TO_DATE(#{startDate}, 'YYYY-MM-DD') AND TO_DATE(#{endDate}, 'YYYY-MM-DD'))
+			,0 ) AS [used_time], 
+			 v.vctcount as [remain_time]
+		FROM vct v
+		WHERE v.eno = #{eno} AND v.vct_type = 'R' AND v.regdate = #{startDate}
+	</select>
+	
+	<!-- 대체휴가 수당 페이지 사이트 리스트 -->
+	<select id="selecrRvctCostDetailList" parameterType="hashmap" resultType="rVctVo">
+		SELECT u.ename, v.site, v.pkey, TO_CHAR(v.work_date, 'YYYY-MM-DD HH24:MI') AS work_date, TO_CHAR(v.work_end_date, 'YYYY-MM-DD HH24:MI') AS work_end_date, CAST(v.work_time AS NUMERIC(4,1)) AS work_time, v.reason
+		FROM [user] u JOIN rvct_confirm v ON u.eno = v.eno
+		WHERE u.eno = #{eno} AND v.work_date &gt;= #{startDate} AND v.status = 'Y' AND v.work_end_date &lt;= #{endDate}
+	</select>
+	
+	<!-- 휴가 신청중 혹은 신청 완료된 목록 보여주는 query -->
+	<select id="selectVctConfirmList" parameterType="int" resultType="vctConfirmVo">
+		SELECT v.id, v.vct_type, v.vct_id, v.status, v.from_vctdate, v.to_vctdate, v.remain_vct_time, v.vct_time, v.eno, v.reason, u.ename, u.dno
+		FROM vct_confirm v JOIN [user] u ON v.eno = u.eno
+		WHERE u.eno = #{eno}
+		ORDER BY v.from_vctdate desc
+	</select>
+	
+	<!-- 휴가 삭제 및 수정을 위해 vct_confirm 테이블의 정보를 id로 조회하는 쿼리 -->
+	<select id="selectVctConfirmListById" parameterType="int" resultType="vctConfirmVo">
+		SELECT v.id, v.vct_type, v.vct_id, v.status, v.from_vctdate, v.to_vctdate, v.remain_vct_time, v.vct_time, v.eno, v.reason, u.ename, u.dno
+		FROM vct_confirm v JOIN [user] u ON v.eno = u.eno
+		WHERE v.id = #{id}
+	</select>
+	
+	<!-- 휴가 삭제시 vct.vctcoutn, vct_confirm.vct_time의 값을 조회하는 쿼리 -->
+	<select id="vctDel1" parameterType="int" resultType="vctConfirmVo">
+		SELECT c.id, c.vct_type, c.vct_id, c.status, c.from_vctdate, c.to_vctdate, c.vct_time, v.vctcount AS remain_vct_time, c.eno, c.reason, u.ename
+		FROM vct_confirm c JOIN vct v ON c.vct_id = v.id JOIN [user] u ON v.eno = u.eno
+		WHERE c.id = #{id}
+	</select>
+	
+	<!-- 휴가 삭제시 status가 Y일 경우에 vct.vctcount의 값을 다시 원래대로 바꿔주는 쿼리 -->
+	<update id="vctDel2" parameterType="vctConfirmVo">
+		UPDATE vct SET vctcount = #{remain_vct_time} WHERE id = #{vct_id}
+	</update>
+	
+	<!-- 휴가 삭제시 vct_confirm의 데이터를 삭제하는 쿼리 -->
+	<delete id="vctDel3" parameterType="int">
+		DELETE FROM vct_confirm WHERE id = #{id}
+	</delete>
+	
+	<!-- 대체휴가 신청시 트래킹 서비스 정보를 가져오는 쿼리  -->
+	<select id="selectTrackingList" parameterType="rVctVo" resultType="rVctVo">
+		SELECT * 
+		FROM rvct_confirm
+		WHERE eno = #{eno}
+			AND work_date BETWEEN TO_DATETIME(#{work_date} || ' 00:00:00.000', 'YYYY-MM-DD HH24:MI:SS.FF') AND TO_DATETIME(#{work_end_date} || ' 23:59:59.999', 'YYYY-MM-DD HH24:MI:SS.FF');
+	</select>
+	
+	<select id="selectTrackingSiteReason" parameterType="int" resultType="rVctVo">
+		SELECT *
+		FROM rvct_confirm
+		WHERE id = #{id}
+	</select>
+	
+	<!-- 관리자 페이지에서 휴가 수정을 위해 휴가 리스트를 조회하는 쿼리 -->
+	<select id="adminPageSelectAllVctList" parameterType="map" resultType="vctVo">
+		SELECT v.[id], u.[eno], u.[ename], u.[dno], TO_CHAR(v.[regdate], 'YYYY-MM-DD') AS [regdate], TO_CHAR(v.[enddate], 'YYYY-MM-DD') AS [enddate], v.[vct_type], v.[vctcount]
+		FROM [user] u JOIN [vct] v ON u.eno = v.eno
+		WHERE (v.regdate = #{yearStartDate} AND v.enddate = #{yearEndDate}) OR (v.regdate = #{quaterStartDate} AND v.enddate = #{quaterEndDate})
+		ORDER BY u.ename, v.vct_type
+	</select>
+	
+	<!-- 관리자 페이지에서 수정을 눌렀을 경우, 휴가 신청 내용들을 수정하도록 팝업창이 출력될 때 해당 vct_id를 통해 SELECT 를 수행 -->
+	<select id="adminPageUpdateVctConfirmList" parameterType="int" resultType="vctConfirmVo">
+		SELECT v.id, v.vct_type, v.vct_id, v.status, v.from_vctdate, v.to_vctdate, v.vct_time, v.eno, v.reason, u.ename
+		FROM vct_confirm v JOIN [user] u ON v.eno = u.eno 
+		WHERE v.vct_id = #{vct_id};
+	</select>
+	
+	<!-- vct_confirm 테이블의 id 값에 해당하는 레코드 update -->
+	<update id="adminPageUpdateVctConfirm" parameterType="vctVo">
+		UPDATE vct_confirm SET vct_time = #{vctcount}, from_vctdate = #{regdate}, to_vctdate = #{enddate} WHERE id = #{id}
+	</update>
+	
+	<!-- adminPageUpdateVctConfirm 성공시 vct 테이블의 id값에 해당하는 레코드 update -->	
+	<update id="adminPageUpdateVct" parameterType="vctVo">
+		UPDATE vct SET vctcount = #{vctcount} WHERE id = #{id}
+	</update>
+</mapper>

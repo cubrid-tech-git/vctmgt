@@ -1,0 +1,26 @@
+#wrapper {
+}
+
+#header {
+	
+}
+
+#container {
+	margin: 0 auto;
+	text-align: center;
+	width: 940px;
+}
+
+#footer {
+	
+}
+
+#tabs {
+	margin: 0 auto;
+	text-align: left;
+	position: relative;
+	z-index: 2;
+}
+#tabs ul li a {
+	font-weight: bold;
+}

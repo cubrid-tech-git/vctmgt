@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="user">
+
+	<!-- 큐브리드 직원을 등록하는 SQL -->
+	<insert id="regCubUser" parameterType="userVo" useGeneratedKeys="true" keyProperty="eno">
+		INSERT INTO [user](dno, ename, email, email_password, regdate) VALUES(#{dno}, #{ename}, #{email}, TO_BASE64(RTRIM(#{email}, '@cubrid.com') || '123'), sysdatetime)
+	</insert>
+	
+	<!-- 큐브리드 직원을 등록하는 SQL -->
+	<select id="getInsertedKey" resultType="userVo">
+		SELECT * FROM [user] order by [eno] DESC limit 1
+	</select>
+	
+	<!-- 큐브리드 직원을 등록하는 SQL -->
+	<insert id="insertInitVct" parameterType="map">
+		INSERT INTO vct(vct_type, eno, vctcount, regdate, enddate) VALUES('A', #{eno}, 0, #{yearStartDate}, #{yearEndDate});
+		INSERT INTO vct(vct_type, eno, vctcount, regdate, enddate) VALUES('R', #{eno}, 0, #{quaterStartDate}, #{quaterEndDate});
+	</insert>
+	
+	<select id="selectAdmin" parameterType="userVo" resultType="userVo">
+		SELECT au.eno, au.dno, au.ename, au.password, au.email, au.regdate 
+		FROM [user] AS u JOIN [admin] AS a ON u.dno = a.dno JOIN [user] au ON au.eno = a.eno 
+		WHERE u.eno = #{eno}
+	</select>
+	
+	<select id="selectCubUser" parameterType="userVo" resultType="userVo">
+		SELECT U.eno, U.dno, U.ename, U.email, U.[password], U.regdate, A.eno AS admincode, (SELECT T.ename FROM [user] T WHERE T.eno = A.eno) AS adminEname, U.email_password
+		FROM [user] U JOIN [admin] A ON U.dno = A.dno
+		<if test="eno!=0">
+			WHERE U.eno = #{eno}
+		</if>
+		ORDER BY U.ename;
+	</select>
+	
+	<select id="selectAdminCheck" parameterType="java.lang.String" resultType="userVo">
+		SELECT u.eno, u.ename, u.dno, u.password FROM [user] u JOIN [admin] a ON u.eno = a.eno WHERE u.ename = #{ename}
+	</select>
+	
+	<update id="updateAdminPw" parameterType="userVo">
+		update [user] set [password]=#{password} where eno = #{eno}
+	</update>
+	
+	<select id="selectAllEno" resultType="userVo">
+		SELECT DISTINCT eno FROM [user];
+	</select>
+	
+	<delete id="deleteUser1" parameterType="userVo">
+		DELETE FROM [rvct_confirm] WHERE [eno] = #{eno}
+	</delete>
+	
+	<delete id="deleteUser2" parameterType="userVo">
+		DELETE FROM [vct_confirm] WHERE [eno] = #{eno}
+	</delete>
+	
+	<delete id="deleteUser3" parameterType="userVo">
+		DELETE FROM [vct] WHERE [eno] = #{eno}
+	</delete>
+	
+	<delete id="deleteUser4" parameterType="userVo">
+		DELETE FROM [user] WHERE [eno] = #{eno}
+	</delete>
+	
+	<select id="selectMailInfo" parameterType="int" resultType="mailVo">
+		SELECT u.eno as [eno], u.ename as [ename], u.email as [sender], u.email_password as [sender_password], 
+		u.dno as [dno], au.ename as [manager_ename], au.email as [receiver], au.email_password AS [receiver_password], 
+		(SELECT cu.email FROM [user] cu JOIN [admin] ca ON cu.dno = ca.dno WHERE ca.dno = 2) AS [cc]
+		FROM [user] u JOIN [admin] a ON u.dno = a.dno JOIN  [user] au ON a.eno = au.eno
+		WHERE u.eno = #{eno};
+	</select>
+	
+	<select id="selectRVConfirmYNMail" parameterType="int" resultType="rVctVo">
+		SELECT * FROM rvct_confirm where id = #{id};
+	</select>
+	
+	<select id="selectVctConfirmYNMail" parameterType="int" resultType="vctConfirmVo">
+		SELECT * FROM vct_confirm WHERE id = #{id};
+	</select>
+	
+	<update id="updateEmailPassword" parameterType="userVo">
+		UPDATE [user] SET email_password = #{email_password} WHERE eno = #{eno}
+	</update>
+	
+	<!-- admin page에서 사용자 정보 update 수행하는 쿼리 -->
+	<update id="cubUserUpdate" parameterType="userVo">
+		UPDATE [user] 
+		SET dno = #{dno}, 
+			ename = #{ename}, 
+			[password] = #{password}, 
+			email = #{email},
+			email_password = #{email_password},
+			regdate = sysdatetime
+		WHERE eno = #{eno}
+	</update>
+	
+	<!-- admin page에서  admin 권한 부여시 update 하는 쿼리-->
+	<update id="cubAdminChange" parameterType="userVo">
+		UPDATE [admin] SET eno = #{eno} WHERE admincode = #{dno}
+	</update>
+</mapper>
