@@ -14,7 +14,7 @@
 	VctDao vctDao = new VctDaoImpl();
 	VConfirmVo vVo = vctDao.selectVctConfirmListById(id);
 	vVo.setReason(vVo.getReason().split(" <br>")[0]);
-	vVo.setReason(vVo.getReason().split("휴가 사유 : ")[1]);
+	vVo.setReason(vVo.getReason().split("휴가 사유 : ").length >  1 ? vVo.getReason().split("휴가 사유 : ")[1] : vVo.getReason().split("휴가 사유 : ")[0]);
 	request.setAttribute("vVo", vVo);
 	String dnoName = null;
 	
