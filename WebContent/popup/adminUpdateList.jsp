@@ -65,7 +65,12 @@
 				location.reload();
 			} else {
 				//alert("수정!\nvctId : " + vctId + "\nvctcount : " + vctcount + "\nvctConfirmId : " + vctConfirmId + "\nvctConfirmCount : " + vctConfirmCount + "\ndate : " + fromDate + "~" + toDate );
-				location.href="../controller/adminUpdateListController.jsp?vctId=" + vctId + "&vctcount=" + vctcount + "&vctConfirmId=" + vctConfirmId + "&vctConfirmCount=" + vctConfirmCount + "&fromDate=" + fromDate + "&toDate=" + toDate;
+				
+				// location.href="../controller/adminUpdateListController.jsp?vctId=" + vctId + "&vctcount=" + vctcount + "&vctConfirmId=" + vctConfirmId + "&vctConfirmCount=" + vctConfirmCount + "&fromDate=" + fromDate + "&toDate=" + toDate;
+				
+				var url = "";
+				url = "../controller/adminUpdateListController.jsp?vctId=" + vctId + "&vctcount=" + vctcount + "&vctConfirmId=" + vctConfirmId + "&vctConfirmCount=" + vctConfirmCount + "&fromDate=" + fromDate + "&toDate=" + toDate;
+				location.href = encodeURI(url);
 			}
 		});
 	});
