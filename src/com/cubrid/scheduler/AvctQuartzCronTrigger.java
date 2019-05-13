@@ -25,7 +25,7 @@ public class AvctQuartzCronTrigger {
 				.build();
 		
 		// Trigger the job to run now, ss mm hh dd MM Week
-		// (ÃÊ, ºÐ, ½Ã, ÀÏ, ¿ù, ¿äÀÏ, ¿¬µµ)
+		// (초, 분, 시, 일, 월, 요일, 연도)
 		Trigger trigger = newTrigger()
 				.withIdentity("avctTrigger", "techGroup")
 				.withSchedule(cronSchedule("0 0 0 1 1 ?"))
