@@ -199,7 +199,7 @@ public class VctDaoImpl implements VctDao {
 		}
 		if(result.length() > 0)	result.deleteCharAt(result.length() - 1);
 		
-		return result.toString();
+		return result.toString().replaceAll("(\r\n|\r|\n|\n\r)", "<br> ");
 	}
 
 	@Override
