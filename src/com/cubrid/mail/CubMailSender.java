@@ -18,176 +18,176 @@ import com.cubrid.vo.VConfirmVo;
 public class CubMailSender {
 
 	public static MailVo makeSendType(String type, MailVo vo) {
-		// ´ëÃ¼ÈŞ°¡ µî·Ï ½ÅÃ» (½ÅÃ»ÀÚ -> °ú¸®ÀÚ, CC)
+		// ëŒ€ì²´íœ´ê°€ ë“±ë¡ ì‹ ì²­ (ì‹ ì²­ì -> ê³¼ë¦¬ì, CC)
 		if (type.equals("RConfirm")) {
-			vo.setSubject("[ÈŞ°¡ÇöÈ²ÆÇ] " + vo.getEname() + " : ´ëÃ¼ÈŞ°¡ µî·Ï ½ÅÃ»ÇÕ´Ï´Ù.");
+			vo.setSubject("[íœ´ê°€í˜„í™©íŒ] " + vo.getEname() + " : ëŒ€ì²´íœ´ê°€ ë“±ë¡ ì‹ ì²­í•©ë‹ˆë‹¤.");
 			RVConfirmVo rvctVo = (RVConfirmVo) vo.getVo();
 			StringBuffer content = new StringBuffer();
-			content.append("»çÀÌÆ® : " + rvctVo.getSite() + "<br>");
-			content.append("Æ®·¡Å· ¼­ºñ½º Á¤º¸ : <a href='http://www.cubrid.com:8888/browse/" + rvctVo.getPkey() + "'>"
+			content.append("ì‚¬ì´íŠ¸ : " + rvctVo.getSite() + "<br>");
+			content.append("íŠ¸ë˜í‚¹ ì„œë¹„ìŠ¤ ì •ë³´ : <a href='http://www.cubrid.com:8888/browse/" + rvctVo.getPkey() + "'>"
 					+ rvctVo.getPkey() + "</a><br>");
-			content.append("ÃÊ°ú±Ù¹« ½ÃÀÛ ½Ã°£ : " + rvctVo.getWork_date() + "<br>");
-			content.append("ÃÊ°ú±Ù¹« Á¾·á ½Ã°£ : " + rvctVo.getWork_end_date() + "<br>");
-			content.append("´ëÃ¼ÈŞ°¡ ¹ß»ı ½Ã°£ : " + rvctVo.getWork_time() + " ½Ã°£<br>");
-			content.append("ÃÊ°ú±Ù¹« ³»¿ë : " + rvctVo.getReason() + "<br>");
+			content.append("ì´ˆê³¼ê·¼ë¬´ ì‹œì‘ ì‹œê°„ : " + rvctVo.getWork_date() + "<br>");
+			content.append("ì´ˆê³¼ê·¼ë¬´ ì¢…ë£Œ ì‹œê°„ : " + rvctVo.getWork_end_date() + "<br>");
+			content.append("ëŒ€ì²´íœ´ê°€ ë°œìƒ ì‹œê°„ : " + rvctVo.getWork_time() + " ì‹œê°„<br>");
+			content.append("ì´ˆê³¼ê·¼ë¬´ ë‚´ìš© : " + rvctVo.getReason() + "<br>");
 			vo.setContent(content.toString());
 
-			// ´ëÃ¼ÈŞ°¡ µî·Ï ½ÂÀÎ ¹× °ÅÀı
+			// ëŒ€ì²´íœ´ê°€ ë“±ë¡ ìŠ¹ì¸ ë° ê±°ì ˆ
 		} else if (type.equals("RConfirmYN")) {
-			// ½ÂÀÎ½Ã
+			// ìŠ¹ì¸ì‹œ
 			RVConfirmVo rVo = (RVConfirmVo) vo.getVo();
 			StringBuffer content = new StringBuffer();
 			if (vo.isConfirm()) {
-				vo.setSubject("[ÈŞ°¡ÇöÈ²ÆÇ] ´ëÃ¼ÈŞ°¡ µî·Ï ½ÂÀÎÇÕ´Ï´Ù.");
-				content.append("»çÀÌÆ® : " + rVo.getSite() + "<br>");
-				content.append("Æ®·¡Å· ¼­ºñ½º Á¤º¸ : <a href='http://www.cubrid.com:8888/browse/" + rVo.getPkey() + "'>"
+				vo.setSubject("[íœ´ê°€í˜„í™©íŒ] ëŒ€ì²´íœ´ê°€ ë“±ë¡ ìŠ¹ì¸í•©ë‹ˆë‹¤.");
+				content.append("ì‚¬ì´íŠ¸ : " + rVo.getSite() + "<br>");
+				content.append("íŠ¸ë˜í‚¹ ì„œë¹„ìŠ¤ ì •ë³´ : <a href='http://www.cubrid.com:8888/browse/" + rVo.getPkey() + "'>"
 						+ rVo.getPkey() + "</a><br>");
-				content.append("ÃÊ°ú±Ù¹« ½ÃÀÛ ½Ã°£ : " + rVo.getWork_date() + "<br>");
-				content.append("ÃÊ°ú±Ù¹« Á¾·á ½Ã°£ : " + rVo.getWork_end_date() + "<br>");
-				content.append("´ëÃ¼ÈŞ°¡ ¹ß»ı ½Ã°£ : " + rVo.getWork_time() + " ½Ã°£<br>");
-				content.append("ÃÊ°ú±Ù¹« ³»¿ë : " + rVo.getReason() + "<br><br>");
-				content.append("½ÂÀÎÇÕ´Ï´Ù.<br>");
+				content.append("ì´ˆê³¼ê·¼ë¬´ ì‹œì‘ ì‹œê°„ : " + rVo.getWork_date() + "<br>");
+				content.append("ì´ˆê³¼ê·¼ë¬´ ì¢…ë£Œ ì‹œê°„ : " + rVo.getWork_end_date() + "<br>");
+				content.append("ëŒ€ì²´íœ´ê°€ ë°œìƒ ì‹œê°„ : " + rVo.getWork_time() + " ì‹œê°„<br>");
+				content.append("ì´ˆê³¼ê·¼ë¬´ ë‚´ìš© : " + rVo.getReason() + "<br><br>");
+				content.append("ìŠ¹ì¸í•©ë‹ˆë‹¤.<br>");
 				vo.setContent(content.toString());
-				// °ÅÀı½Ã
+				// ê±°ì ˆì‹œ
 			} else {
-				vo.setSubject("[ÈŞ°¡ÇöÈ²ÆÇ] ´ëÃ¼ÈŞ°¡ µî·Ï ¹Ì½ÂÀÎÇÕ´Ï´Ù.");
-				content.append("»çÀÌÆ® : " + rVo.getSite() + "<br>");
-				content.append("Æ®·¡Å· ¼­ºñ½º Á¤º¸ : <a href='http://www.cubrid.com:8888/browse/" + rVo.getPkey() + "'>"
+				vo.setSubject("[íœ´ê°€í˜„í™©íŒ] ëŒ€ì²´íœ´ê°€ ë“±ë¡ ë¯¸ìŠ¹ì¸í•©ë‹ˆë‹¤.");
+				content.append("ì‚¬ì´íŠ¸ : " + rVo.getSite() + "<br>");
+				content.append("íŠ¸ë˜í‚¹ ì„œë¹„ìŠ¤ ì •ë³´ : <a href='http://www.cubrid.com:8888/browse/" + rVo.getPkey() + "'>"
 						+ rVo.getPkey() + "</a><br>");
-				content.append("ÃÊ°ú±Ù¹« ½ÃÀÛ ½Ã°£ : " + rVo.getWork_date() + "<br>");
-				content.append("ÃÊ°ú±Ù¹« Á¾·á ½Ã°£ : " + rVo.getWork_end_date() + "<br>");
-				content.append("´ëÃ¼ÈŞ°¡ ¹ß»ı ½Ã°£ : " + rVo.getWork_time() + " ½Ã°£<br>");
-				content.append("ÃÊ°ú±Ù¹« ³»¿ë : " + rVo.getReason() + "<br><br>");
-				content.append("¹Ì½ÂÀÎÇÕ´Ï´Ù.<br>");
+				content.append("ì´ˆê³¼ê·¼ë¬´ ì‹œì‘ ì‹œê°„ : " + rVo.getWork_date() + "<br>");
+				content.append("ì´ˆê³¼ê·¼ë¬´ ì¢…ë£Œ ì‹œê°„ : " + rVo.getWork_end_date() + "<br>");
+				content.append("ëŒ€ì²´íœ´ê°€ ë°œìƒ ì‹œê°„ : " + rVo.getWork_time() + " ì‹œê°„<br>");
+				content.append("ì´ˆê³¼ê·¼ë¬´ ë‚´ìš© : " + rVo.getReason() + "<br><br>");
+				content.append("ë¯¸ìŠ¹ì¸í•©ë‹ˆë‹¤.<br>");
 				vo.setContent(content.toString());
 			}
 
-			// ÈŞ°¡(´ëÃ¼ or ¿¬Â÷) »ç¿ë ½ÅÃ»
+			// íœ´ê°€(ëŒ€ì²´ or ì—°ì°¨) ì‚¬ìš© ì‹ ì²­
 		} else if (type.equals("VctConfirm")) {
 			VConfirmVo vConfirmVo = (VConfirmVo) vo.getVo();
 			StringBuffer content = new StringBuffer();
 
 			if (vConfirmVo.getVct_type().equals("A")) {
-				vo.setSubject("[ÈŞ°¡ÇöÈ²ÆÇ] " + vo.getEname() + " : ¿¬Â÷ÈŞ°¡ »ç¿ë ½ÅÃ»ÇÕ´Ï´Ù.");
-				content.append("ÈŞ°¡ ±â°£ : " + vConfirmVo.getFrom_vctdate() + " ~ " + vConfirmVo.getTo_vctdate() + "<br>");
-				content.append("ÈŞ°¡ ½Ã°£ : " + vConfirmVo.getVct_time() + " ÀÏ<br>");
+				vo.setSubject("[íœ´ê°€í˜„í™©íŒ] " + vo.getEname() + " : ì—°ì°¨íœ´ê°€ ì‚¬ìš© ì‹ ì²­í•©ë‹ˆë‹¤.");
+				content.append("íœ´ê°€ ê¸°ê°„ : " + vConfirmVo.getFrom_vctdate() + " ~ " + vConfirmVo.getTo_vctdate() + "<br>");
+				content.append("íœ´ê°€ ì‹œê°„ : " + vConfirmVo.getVct_time() + " ì¼<br>");
 				content.append(vConfirmVo.getReason() + "<br>");
 				vo.setContent(content.toString());
 			} else if (vConfirmVo.getVct_type().equals("R")) {
-				vo.setSubject("[ÈŞ°¡ÇöÈ²ÆÇ] " + vo.getEname() + " : ´ëÃ¼ÈŞ°¡ »ç¿ë ½ÅÃ»ÇÕ´Ï´Ù.");
-				content.append("ÈŞ°¡ ±â°£ : " + vConfirmVo.getFrom_vctdate() + " ~ " + vConfirmVo.getTo_vctdate() + "<br>");
-				content.append("ÈŞ°¡ ½Ã°£ : " + vConfirmVo.getVct_time() + " ½Ã°£<br>");
+				vo.setSubject("[íœ´ê°€í˜„í™©íŒ] " + vo.getEname() + " : ëŒ€ì²´íœ´ê°€ ì‚¬ìš© ì‹ ì²­í•©ë‹ˆë‹¤.");
+				content.append("íœ´ê°€ ê¸°ê°„ : " + vConfirmVo.getFrom_vctdate() + " ~ " + vConfirmVo.getTo_vctdate() + "<br>");
+				content.append("íœ´ê°€ ì‹œê°„ : " + vConfirmVo.getVct_time() + " ì‹œê°„<br>");
 				content.append(vConfirmVo.getReason() + "<br>");
 				vo.setContent(content.toString());
 			} else if (vConfirmVo.getVct_type().equals("C")) {
 
 			} else if (vConfirmVo.getVct_type().equals("S")) {
-				vo.setSubject("[ÈŞ°¡ÇöÈ²ÆÇ] " + vo.getEname() + " : °æÁ¶(Æ¯º°)ÈŞ°¡ »ç¿ë ½ÅÃ»ÇÕ´Ï´Ù.");
-				content.append("ÈŞ°¡ ±â°£ : " + vConfirmVo.getFrom_vctdate() + " ~ " + vConfirmVo.getTo_vctdate() + "<br>");
-				content.append("ÈŞ°¡ ½Ã°£ : " + vConfirmVo.getVct_time() + " ÀÏ<br>");
+				vo.setSubject("[íœ´ê°€í˜„í™©íŒ] " + vo.getEname() + " : ê²½ì¡°(íŠ¹ë³„)íœ´ê°€ ì‚¬ìš© ì‹ ì²­í•©ë‹ˆë‹¤.");
+				content.append("íœ´ê°€ ê¸°ê°„ : " + vConfirmVo.getFrom_vctdate() + " ~ " + vConfirmVo.getTo_vctdate() + "<br>");
+				content.append("íœ´ê°€ ì‹œê°„ : " + vConfirmVo.getVct_time() + " ì¼<br>");
 				content.append(vConfirmVo.getReason() + "<br>");
 				vo.setContent(content.toString());
 			} else {
 				System.out.println("VCT CONFIRM MAILING : NOT A VCT TYPE");
 			}
 
-			// ÈŞ°¡ / ´ëÃ¼ÈŞ°¡ »ç¿ë ½ÂÀÎ ¹× °ÅÀı
+			// íœ´ê°€ / ëŒ€ì²´íœ´ê°€ ì‚¬ìš© ìŠ¹ì¸ ë° ê±°ì ˆ
 		} else if (type.equals("VctConfirmYN")) {
 			VConfirmVo vVo = (VConfirmVo) vo.getVo();
 			StringBuffer content = new StringBuffer();
-			// ½ÂÀÎ½Ã
+			// ìŠ¹ì¸ì‹œ
 			if (vo.isConfirm()) {
 				if (vVo.getVct_type().equals("A")) {
-					vo.setSubject("[ÈŞ°¡ÇöÈ²ÆÇ] ¿¬Â÷ÈŞ°¡ »ç¿ë ½ÂÀÎÇÕ´Ï´Ù.");
-					content.append("ÈŞ°¡ ±â°£ : " + vVo.getFrom_vctdate() + " ~ " + vVo.getTo_vctdate() + "<br>");
-					content.append("ÈŞ°¡ ½Ã°£ : " + vVo.getVct_time() + " ÀÏ<br>");
-					content.append("»çÀ¯ : " + vVo.getReason() + "<br><br>");
-					content.append("½ÂÀÎÇÕ´Ï´Ù.<br>");
+					vo.setSubject("[íœ´ê°€í˜„í™©íŒ] ì—°ì°¨íœ´ê°€ ì‚¬ìš© ìŠ¹ì¸í•©ë‹ˆë‹¤.");
+					content.append("íœ´ê°€ ê¸°ê°„ : " + vVo.getFrom_vctdate() + " ~ " + vVo.getTo_vctdate() + "<br>");
+					content.append("íœ´ê°€ ì‹œê°„ : " + vVo.getVct_time() + " ì¼<br>");
+					content.append("ì‚¬ìœ  : " + vVo.getReason() + "<br><br>");
+					content.append("ìŠ¹ì¸í•©ë‹ˆë‹¤.<br>");
 					vo.setContent(content.toString());
 				} else if (vVo.getVct_type().equals("R")) {
-					vo.setSubject("[ÈŞ°¡ÇöÈ²ÆÇ] ´ëÃ¼ÈŞ°¡ »ç¿ë ½ÂÀÎÇÕ´Ï´Ù.");
-					content.append("ÈŞ°¡ ±â°£ : " + vVo.getFrom_vctdate() + " ~ " + vVo.getTo_vctdate() + "<br>");
-					content.append("ÈŞ°¡ ½Ã°£ : " + vVo.getVct_time() + " ½Ã°£<br>");
-					content.append("»çÀ¯ : " + vVo.getReason() + "<br><br>");
-					content.append("½ÂÀÎÇÕ´Ï´Ù.<br>");
+					vo.setSubject("[íœ´ê°€í˜„í™©íŒ] ëŒ€ì²´íœ´ê°€ ì‚¬ìš© ìŠ¹ì¸í•©ë‹ˆë‹¤.");
+					content.append("íœ´ê°€ ê¸°ê°„ : " + vVo.getFrom_vctdate() + " ~ " + vVo.getTo_vctdate() + "<br>");
+					content.append("íœ´ê°€ ì‹œê°„ : " + vVo.getVct_time() + " ì‹œê°„<br>");
+					content.append("ì‚¬ìœ  : " + vVo.getReason() + "<br><br>");
+					content.append("ìŠ¹ì¸í•©ë‹ˆë‹¤.<br>");
 					vo.setContent(content.toString());
 				} else if (vVo.getVct_type().equals("C")) {
 
 				} else if (vVo.getVct_type().equals("S")) {
-					vo.setSubject("[ÈŞ°¡ÇöÈ²ÆÇ] °æÁ¶(Æ¯º°)ÈŞ°¡ »ç¿ë ½ÂÀÎÇÕ´Ï´Ù.");
-					content.append("ÈŞ°¡ ±â°£ : " + vVo.getFrom_vctdate() + " ~ " + vVo.getTo_vctdate() + "<br>");
-					content.append("ÈŞ°¡ ½Ã°£ : " + vVo.getVct_time() + " ÀÏ<br>");
-					content.append("»çÀ¯ : " + vVo.getReason() + "<br><br>");
-					content.append("½ÂÀÎÇÕ´Ï´Ù.<br>");
+					vo.setSubject("[íœ´ê°€í˜„í™©íŒ] ê²½ì¡°(íŠ¹ë³„)íœ´ê°€ ì‚¬ìš© ìŠ¹ì¸í•©ë‹ˆë‹¤.");
+					content.append("íœ´ê°€ ê¸°ê°„ : " + vVo.getFrom_vctdate() + " ~ " + vVo.getTo_vctdate() + "<br>");
+					content.append("íœ´ê°€ ì‹œê°„ : " + vVo.getVct_time() + " ì¼<br>");
+					content.append("ì‚¬ìœ  : " + vVo.getReason() + "<br><br>");
+					content.append("ìŠ¹ì¸í•©ë‹ˆë‹¤.<br>");
 					vo.setContent(content.toString());
 				}
-				// °ÅÀı½Ã
+				// ê±°ì ˆì‹œ
 			} else {
 				if (vVo.getVct_type().equals("A")) {
-					vo.setSubject("[ÈŞ°¡ÇöÈ²ÆÇ] ¿¬Â÷ÈŞ°¡ »ç¿ë ¹Ì½ÂÀÎÇÕ´Ï´Ù.");
-					content.append("ÈŞ°¡ ±â°£ : " + vVo.getFrom_vctdate() + " ~ " + vVo.getTo_vctdate() + "<br>");
-					content.append("ÈŞ°¡ ½Ã°£ : " + vVo.getVct_time() + " ÀÏ<br>");
-					content.append("»çÀ¯ : " + vVo.getReason() + "<br><br>");
-					content.append("¹Ì½ÂÀÎÇÕ´Ï´Ù.<br>");
+					vo.setSubject("[íœ´ê°€í˜„í™©íŒ] ì—°ì°¨íœ´ê°€ ì‚¬ìš© ë¯¸ìŠ¹ì¸í•©ë‹ˆë‹¤.");
+					content.append("íœ´ê°€ ê¸°ê°„ : " + vVo.getFrom_vctdate() + " ~ " + vVo.getTo_vctdate() + "<br>");
+					content.append("íœ´ê°€ ì‹œê°„ : " + vVo.getVct_time() + " ì¼<br>");
+					content.append("ì‚¬ìœ  : " + vVo.getReason() + "<br><br>");
+					content.append("ë¯¸ìŠ¹ì¸í•©ë‹ˆë‹¤.<br>");
 					vo.setContent(content.toString());
 				} else if (vVo.getVct_type().equals("R")) {
-					vo.setSubject("[ÈŞ°¡ÇöÈ²ÆÇ] ´ëÃ¼ÈŞ°¡ »ç¿ë ¹Ì½ÂÀÎÇÕ´Ï´Ù.");
-					content.append("ÈŞ°¡ ±â°£ : " + vVo.getFrom_vctdate() + " ~ " + vVo.getTo_vctdate() + "<br>");
-					content.append("ÈŞ°¡ ½Ã°£ : " + vVo.getVct_time() + " ½Ã°£<br>");
-					content.append("»çÀ¯ : " + vVo.getReason() + "<br><br>");
-					content.append("¹Ì½ÂÀÎÇÕ´Ï´Ù.<br>");
+					vo.setSubject("[íœ´ê°€í˜„í™©íŒ] ëŒ€ì²´íœ´ê°€ ì‚¬ìš© ë¯¸ìŠ¹ì¸í•©ë‹ˆë‹¤.");
+					content.append("íœ´ê°€ ê¸°ê°„ : " + vVo.getFrom_vctdate() + " ~ " + vVo.getTo_vctdate() + "<br>");
+					content.append("íœ´ê°€ ì‹œê°„ : " + vVo.getVct_time() + " ì‹œê°„<br>");
+					content.append("ì‚¬ìœ  : " + vVo.getReason() + "<br><br>");
+					content.append("ë¯¸ìŠ¹ì¸í•©ë‹ˆë‹¤.<br>");
 					vo.setContent(content.toString());
 				} else if (vVo.getVct_type().equals("C")) {
 
 				} else if (vVo.getVct_type().equals("S")) {
-					vo.setSubject("[ÈŞ°¡ÇöÈ²ÆÇ] °æÁ¶(Æ¯º°)ÈŞ°¡ »ç¿ë ¹Ì½ÂÀÎÇÕ´Ï´Ù.");
-					content.append("ÈŞ°¡ ±â°£ : " + vVo.getFrom_vctdate() + " ~ " + vVo.getTo_vctdate() + "<br>");
-					content.append("ÈŞ°¡ ½Ã°£ : " + vVo.getVct_time() + " ÀÏ<br>");
-					content.append("»çÀ¯ : " + vVo.getReason() + "<br><br>");
-					content.append("¹Ì½ÂÀÎÇÕ´Ï´Ù.<br>");
+					vo.setSubject("[íœ´ê°€í˜„í™©íŒ] ê²½ì¡°(íŠ¹ë³„)íœ´ê°€ ì‚¬ìš© ë¯¸ìŠ¹ì¸í•©ë‹ˆë‹¤.");
+					content.append("íœ´ê°€ ê¸°ê°„ : " + vVo.getFrom_vctdate() + " ~ " + vVo.getTo_vctdate() + "<br>");
+					content.append("íœ´ê°€ ì‹œê°„ : " + vVo.getVct_time() + " ì¼<br>");
+					content.append("ì‚¬ìœ  : " + vVo.getReason() + "<br><br>");
+					content.append("ë¯¸ìŠ¹ì¸í•©ë‹ˆë‹¤.<br>");
 					vo.setContent(content.toString());
 				}
 			}
 
-			// ÈŞ°¡ ½ÅÃ» Á¤º¸ ¼öÁ¤ÇÒ °æ¿ì mail º¸³»±â
+			// íœ´ê°€ ì‹ ì²­ ì •ë³´ ìˆ˜ì •í•  ê²½ìš° mail ë³´ë‚´ê¸°
 		} else if (type.equals("VConfirmUpdate")) {
 			VConfirmVo vConfirmVo = (VConfirmVo) vo.getVo();
 			StringBuffer content = new StringBuffer();
 
 			if (vConfirmVo.getVct_type().equals("A")) {
-				vo.setSubject("[ÈŞ°¡ÇöÈ²ÆÇ] " + vo.getEname() + " : ¿¬Â÷ÈŞ°¡ ½ÅÃ»³»¿ë ¼öÁ¤ÇÏ¿© ´Ù½Ã º¸³À´Ï´Ù.");
-				content.append("ÈŞ°¡ ±â°£ : " + vConfirmVo.getFrom_vctdate() + " ~ " + vConfirmVo.getTo_vctdate() + "<br>");
-				content.append("ÈŞ°¡ ½Ã°£ : " + vConfirmVo.getVct_time() + " ÀÏ<br>");
-				content.append("ÈŞ°¡ »çÀ¯ : " + vConfirmVo.getReason() + "<br>");
+				vo.setSubject("[íœ´ê°€í˜„í™©íŒ] " + vo.getEname() + " : ì—°ì°¨íœ´ê°€ ì‹ ì²­ë‚´ìš© ìˆ˜ì •í•˜ì—¬ ë‹¤ì‹œ ë³´ëƒ…ë‹ˆë‹¤.");
+				content.append("íœ´ê°€ ê¸°ê°„ : " + vConfirmVo.getFrom_vctdate() + " ~ " + vConfirmVo.getTo_vctdate() + "<br>");
+				content.append("íœ´ê°€ ì‹œê°„ : " + vConfirmVo.getVct_time() + " ì¼<br>");
+				content.append("íœ´ê°€ ì‚¬ìœ  : " + vConfirmVo.getReason() + "<br>");
 				vo.setContent(content.toString());
 			} else if (vConfirmVo.getVct_type().equals("R")) {
-				vo.setSubject("[ÈŞ°¡ÇöÈ²ÆÇ] " + vo.getEname() + " : ´ëÃ¼ÈŞ°¡ ½ÅÃ»³»¿ë ¼öÁ¤ÇÏ¿© ´Ù½Ã º¸³À´Ï´Ù.");
-				content.append("ÈŞ°¡ ±â°£ : " + vConfirmVo.getFrom_vctdate() + " ~ " + vConfirmVo.getTo_vctdate() + "<br>");
-				content.append("ÈŞ°¡ ½Ã°£ : " + vConfirmVo.getVct_time() + " ½Ã°£<br>");
-				content.append("ÈŞ°¡ »çÀ¯ : " + vConfirmVo.getReason() + "<br>");
+				vo.setSubject("[íœ´ê°€í˜„í™©íŒ] " + vo.getEname() + " : ëŒ€ì²´íœ´ê°€ ì‹ ì²­ë‚´ìš© ìˆ˜ì •í•˜ì—¬ ë‹¤ì‹œ ë³´ëƒ…ë‹ˆë‹¤.");
+				content.append("íœ´ê°€ ê¸°ê°„ : " + vConfirmVo.getFrom_vctdate() + " ~ " + vConfirmVo.getTo_vctdate() + "<br>");
+				content.append("íœ´ê°€ ì‹œê°„ : " + vConfirmVo.getVct_time() + " ì‹œê°„<br>");
+				content.append("íœ´ê°€ ì‚¬ìœ  : " + vConfirmVo.getReason() + "<br>");
 				vo.setContent(content.toString());
 			} else if (vConfirmVo.getVct_type().equals("C")) {
 
 			} else if (vConfirmVo.getVct_type().equals("S")) {
-				vo.setSubject("[ÈŞ°¡ÇöÈ²ÆÇ] " + vo.getEname() + " : °æÁ¶(Æ¯º°)ÈŞ°¡ ½ÅÃ»³»¿ë ¼öÁ¤ÇÏ¿© ´Ù½Ã º¸³À´Ï´Ù.");
-				content.append("ÈŞ°¡ ±â°£ : " + vConfirmVo.getFrom_vctdate() + " ~ " + vConfirmVo.getTo_vctdate() + "<br>");
-				content.append("ÈŞ°¡ ½Ã°£ : " + vConfirmVo.getVct_time() + " ÀÏ<br>");
-				content.append("ÈŞ°¡ »çÀ¯ : " + vConfirmVo.getReason() + "<br>");
+				vo.setSubject("[íœ´ê°€í˜„í™©íŒ] " + vo.getEname() + " : ê²½ì¡°(íŠ¹ë³„)íœ´ê°€ ì‹ ì²­ë‚´ìš© ìˆ˜ì •í•˜ì—¬ ë‹¤ì‹œ ë³´ëƒ…ë‹ˆë‹¤.");
+				content.append("íœ´ê°€ ê¸°ê°„ : " + vConfirmVo.getFrom_vctdate() + " ~ " + vConfirmVo.getTo_vctdate() + "<br>");
+				content.append("íœ´ê°€ ì‹œê°„ : " + vConfirmVo.getVct_time() + " ì¼<br>");
+				content.append("íœ´ê°€ ì‚¬ìœ  : " + vConfirmVo.getReason() + "<br>");
 				vo.setContent(content.toString());
 			} else {
 				System.out.println("VCT CONFIRM MAILING : NOT A VCT TYPE");
 			}
-			// ÈŞ°¡ ½ÅÃ» Á¤º¸ »èÁ¦ÇÒ °æ¿ì mail º¸³»±â
+			// íœ´ê°€ ì‹ ì²­ ì •ë³´ ì‚­ì œí•  ê²½ìš° mail ë³´ë‚´ê¸°
 		} else if (type.equals("VConfirmDel")) {
 			VConfirmVo vVo = (VConfirmVo) vo.getVo();
 			StringBuffer content = new StringBuffer();
-			vo.setSubject("[ÈŞ°¡ÇöÈ²ÆÇ] ÈŞ°¡ ½ÂÀÎ³»¿ª Ãë¼Ò ÇÕ´Ï´Ù.");
-			content.append("ÈŞ°¡ ±â°£ : " + vVo.getFrom_vctdate() + " ~ " + vVo.getTo_vctdate() + "<br>");
+			vo.setSubject("[íœ´ê°€í˜„í™©íŒ] íœ´ê°€ ìŠ¹ì¸ë‚´ì—­ ì·¨ì†Œ í•©ë‹ˆë‹¤.");
+			content.append("íœ´ê°€ ê¸°ê°„ : " + vVo.getFrom_vctdate() + " ~ " + vVo.getTo_vctdate() + "<br>");
 			if (vVo.getVct_type().equals("R"))
-				content.append("ÈŞ°¡ ½Ã°£ : " + vVo.getVct_time() + " ½Ã°£<br>");
+				content.append("íœ´ê°€ ì‹œê°„ : " + vVo.getVct_time() + " ì‹œê°„<br>");
 			else
-				content.append("ÈŞ°¡ ½Ã°£ : " + vVo.getVct_time() + " ÀÏ<br>");
-			content.append("»çÀ¯ : " + vVo.getReason() + "<br><br>");
+				content.append("íœ´ê°€ ì‹œê°„ : " + vVo.getVct_time() + " ì¼<br>");
+			content.append("ì‚¬ìœ  : " + vVo.getReason() + "<br><br>");
 			vo.setContent(content.toString());
 		}
 
@@ -201,26 +201,26 @@ public class CubMailSender {
 
 		boolean successCheck = false;
 
-		// ¸ŞÀÏ ¹ß¼ÛÀ» À§ÇÑ Á¤º¸ ¼³Á¤
-		// ¸ŞÀÏÀ» ¹ß¼ÛÇØ ÁÙ SMTP ¼­¹ö¿¡ ´ëÇÑ Á¢¼Ó Á¤º¸¸¦ ¼³Á¤
-		// Á¤º¸¸¦ ´ã±â À§ÇÑ °´Ã¼
+		// ë©”ì¼ ë°œì†¡ì„ ìœ„í•œ ì •ë³´ ì„¤ì •
+		// ë©”ì¼ì„ ë°œì†¡í•´ ì¤„ SMTP ì„œë²„ì— ëŒ€í•œ ì ‘ì† ì •ë³´ë¥¼ ì„¤ì •
+		// ì •ë³´ë¥¼ ë‹´ê¸° ìœ„í•œ ê°ì²´
 		Properties p = new Properties();
 
-		// SMTP ¼­¹öÀÇ °èÁ¤ ¼³Á¤
-		// Naver¿Í ¿¬°áÇÒ °æ¿ì ³×ÀÌ¹ö ¾ÆÀÌµğ ÁöÁ¤
-		// Google°ú ¿¬°áÇÒ °æ¿ì º»ÀÎÀÇ Gmail ÁÖ¼Ò
+		// SMTP ì„œë²„ì˜ ê³„ì • ì„¤ì •
+		// Naverì™€ ì—°ê²°í•  ê²½ìš° ë„¤ì´ë²„ ì•„ì´ë”” ì§€ì •
+		// Googleê³¼ ì—°ê²°í•  ê²½ìš° ë³¸ì¸ì˜ Gmail ì£¼ì†Œ
 		p.put("mail.stmp.user", sendId);
 
-		// SMTP ¼­¹ö Á¤º¸ ¼³Á¤
-		// ³×ÀÌ¹öÀÏ °æ¿ì smtp.naver.com
-		// Google ÀÏ °æ¿ì smtp.gmail.com
+		// SMTP ì„œë²„ ì •ë³´ ì„¤ì •
+		// ë„¤ì´ë²„ì¼ ê²½ìš° smtp.naver.com
+		// Google ì¼ ê²½ìš° smtp.gmail.com
 		// p.put("mail.smtp.host", "smtp.gmail.com");
 		// p.put("mail.smtp.host", "mail.cubrid.com");
 		p.put("mail.smtp.host", "smtp.office365.com");
 		p.put("mail.smtp.starttls.enable","true");
 		p.put("mail.smtp.ssl.trust", "smtp.office365.com");
 
-		// ¾Æ·¡ Á¤º¸´Â ³×ÀÌ¹ö¿Í ±¸±ÛÀÌ µ¿ÀÏ
+		// ì•„ë˜ ì •ë³´ëŠ” ë„¤ì´ë²„ì™€ êµ¬ê¸€ì´ ë™ì¼
 		// p.put("mail.smtp.port", "465"); // gmail, naver
 		// p.put("mail.smtp.port", "25");
 		p.put("mail.smtp.port", "587");
@@ -238,36 +238,36 @@ public class CubMailSender {
 			Authenticator auth = new SMTPAuthenticator(sendId, KeyGen.dec(sendPw));
 			Session ses = Session.getInstance(p, auth);
 
-			// ¸ŞÀÏÀ» Àü¼ÛÇÒ ¶§ »ó¼¼ÇÑ »óÈ²À» ÄÜ¼Ö¿¡ Ãâ·Â
+			// ë©”ì¼ì„ ì „ì†¡í•  ë•Œ ìƒì„¸í•œ ìƒí™©ì„ ì½˜ì†”ì— ì¶œë ¥
 			ses.setDebug(true);
 
-			// ¸ŞÀÏÀÇ ³»¿ëÀ» ´ã±â À§ÇÑ °´Ã¼
+			// ë©”ì¼ì˜ ë‚´ìš©ì„ ë‹´ê¸° ìœ„í•œ ê°ì²´
 			MimeMessage msg = new MimeMessage(ses);
 
-			// Á¦¸ñ ¼³Á¤
+			// ì œëª© ì„¤ì •
 			msg.setSubject(vo.getSubject(), "UTF-8");
 
-			// º¸³»´Â »ç¶÷ÀÇ ¸ŞÀÏ ÁÖ¼Ò
+			// ë³´ë‚´ëŠ” ì‚¬ëŒì˜ ë©”ì¼ ì£¼ì†Œ
 			Address fromAddr = new InternetAddress(sendId);
 			msg.setFrom(fromAddr);
 
-			// ¹Ş´Â »ç¶÷ÀÇ ¸ŞÀÏ ÁÖ¼Ò
+			// ë°›ëŠ” ì‚¬ëŒì˜ ë©”ì¼ ì£¼ì†Œ
 			// Address toAddr = new InternetAddress(vo.getReceiver());
 			// msg.addRecipient(Message.RecipientType.TO, toAddr);
 			Address[] toAddrArr = { new InternetAddress(vo.getReceiver()), new InternetAddress(vo.getSender()) };
 			msg.addRecipients(Message.RecipientType.TO, toAddrArr);
 
-			// ÂüÁ¶ ¸ŞÀÏ ÁÖ¼Ò
+			// ì°¸ì¡° ë©”ì¼ ì£¼ì†Œ
 			Address ccAddr = null;
 			if (vo.getCc() != null) {
 				ccAddr = new InternetAddress(vo.getCc());
 				msg.addRecipient(Message.RecipientType.CC, ccAddr);
 			}
 
-			// ¸Ş½ÃÁö º»¹®ÀÇ ³»¿ë°ú Çü½Ä, Ä³¸¯ÅÍ ¼Â ¼³Á¤
+			// ë©”ì‹œì§€ ë³¸ë¬¸ì˜ ë‚´ìš©ê³¼ í˜•ì‹, ìºë¦­í„° ì…‹ ì„¤ì •
 			msg.setContent(vo.getContent(), "text/html;charset=UTF-8");
 
-			// ¹ß¼ÛÇÏ±â
+			// ë°œì†¡í•˜ê¸°
 			Transport.send(msg);
 			successCheck = true;
 		} catch (Exception e) {

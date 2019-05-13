@@ -56,7 +56,7 @@ public class VctManager {
 		SqlSession session = sqlMapper.openSession();
 		List<RVConfirmVo> list = session.selectList("vct.selectRvctConfirm", map);
 		/*
-		 * map °´Ã¼ Á¤º¸
+		 * map ê°ì²´ ì •ë³´
 		 * key : confirmType - value : manager or employee
 		 * key : confirmEno - value : eno
 		 */
@@ -115,9 +115,9 @@ public class VctManager {
 	}
 	
 	/**
-	 * ´ëÃ¼ÈŞ°¡ ÃÊ±âÈ­ ½ºÄÉÁì¸µ Ã¹¹øÂ° ¸Ş¼Òµå (4¹øÂ°±îÁö ÀÖÀ½)
-	 * vct Å×ÀÌºí¿¡ INSERT ¼öÇà
-	 * ÇÊ¿ä ÆÄ¶ó¹ÌÅÍ : eno, work_date, work_end_date
+	 * ëŒ€ì²´íœ´ê°€ ì´ˆê¸°í™” ìŠ¤ì¼€ì¥´ë§ ì²«ë²ˆì§¸ ë©”ì†Œë“œ (4ë²ˆì§¸ê¹Œì§€ ìˆìŒ)
+	 * vct í…Œì´ë¸”ì— INSERT ìˆ˜í–‰
+	 * í•„ìš” íŒŒë¼ë¯¸í„° : eno, work_date, work_end_date
 	 * @param RVConfirmVo
 	 * @return int
 	 */
@@ -130,8 +130,8 @@ public class VctManager {
 	}
 	
 	/**
-	 * Àü ºĞ±â ³²Àº ´ëÃ¼ÈŞ°¡ÀÇ ¼Ò¼öÁ¡ ÀÚ¸® °ªÀ» °¡Á®¿À´Â ¸Ş¼Òµå
-	 * ÇÊ¿ä ÆÄ¶ó¹ÌÅÍ : eno, regdate(Àü ºĞ±âÀÇ ´ëÃ¼ÈŞ°¡ ½ÃÀÛÀÏ)
+	 * ì „ ë¶„ê¸° ë‚¨ì€ ëŒ€ì²´íœ´ê°€ì˜ ì†Œìˆ˜ì  ìë¦¬ ê°’ì„ ê°€ì ¸ì˜¤ëŠ” ë©”ì†Œë“œ
+	 * í•„ìš” íŒŒë¼ë¯¸í„° : eno, regdate(ì „ ë¶„ê¸°ì˜ ëŒ€ì²´íœ´ê°€ ì‹œì‘ì¼)
 	 * @param VctVo
 	 * @return RVConfirmVo
 	 */
@@ -145,8 +145,8 @@ public class VctManager {
 	}
 	
 	/**
-	 * ¹ÌÃ³¸®µÈ vct_confirm µ¥ÀÌÅÍµéÀ» Á¶È¸ÇÏ´Â ¸Ş¼Òµå
-	 * ÇÊ¿äÇÑ ÆÄ¶ó¹ÌÅÍ´Â ºĞ±â ³¡³ª´Â ³¯Â¥
+	 * ë¯¸ì²˜ë¦¬ëœ vct_confirm ë°ì´í„°ë“¤ì„ ì¡°íšŒí•˜ëŠ” ë©”ì†Œë“œ
+	 * í•„ìš”í•œ íŒŒë¼ë¯¸í„°ëŠ” ë¶„ê¸° ëë‚˜ëŠ” ë‚ ì§œ
 	 * ex) work_end_date : 2015-04-10
 	 * @param String
 	 * @return VConfirmVo
@@ -160,7 +160,7 @@ public class VctManager {
 	}
 	
 	/**
-	 * ºĞ±â 10ÀÏ¿¡ ³²Àº work_timeÀ» ÀÌ¿ùÇÏ´Â ¸Ş¼Òµå
+	 * ë¶„ê¸° 10ì¼ì— ë‚¨ì€ work_timeì„ ì´ì›”í•˜ëŠ” ë©”ì†Œë“œ
 	 * @param RVConfirmVo
 	 * @return int
 	 */
@@ -173,8 +173,8 @@ public class VctManager {
 	}
 	
 	/**
-	 * schedulingRvct2¿¡¼­ Á¶È¸µÈ Ç×¸ñÀ» UPDATE ÇÏ´Â ¸Ş¼Òµå
-	 * ÇÊ¿ä ÆÄ¶ó¹ÌÅÍ : vct_confirm.id
+	 * schedulingRvct2ì—ì„œ ì¡°íšŒëœ í•­ëª©ì„ UPDATE í•˜ëŠ” ë©”ì†Œë“œ
+	 * í•„ìš” íŒŒë¼ë¯¸í„° : vct_confirm.id
 	 * @param RVConfirmVo
 	 * @return int
 	 */
@@ -187,8 +187,8 @@ public class VctManager {
 	}
 	
 	/**
-	 * ºĞ±â Áö³­ rvct_confirm Å×ÀÌºíÀÇ µ¥ÀÌÅÍµéÀ» N À¸·Î ¹Ù²Ù´Â ¸Ş¼Òµå
-	 * ÆÄ¶ó¹ÌÅÍ´Â ºĞ±â ½ÃÀÛÀÏ, ´ÙÀ½ ºĞ±â ½ÃÀÛÀÏÀÌ ÇÊ¿äÇÔ
+	 * ë¶„ê¸° ì§€ë‚œ rvct_confirm í…Œì´ë¸”ì˜ ë°ì´í„°ë“¤ì„ N ìœ¼ë¡œ ë°”ê¾¸ëŠ” ë©”ì†Œë“œ
+	 * íŒŒë¼ë¯¸í„°ëŠ” ë¶„ê¸° ì‹œì‘ì¼, ë‹¤ìŒ ë¶„ê¸° ì‹œì‘ì¼ì´ í•„ìš”í•¨
 	 * ex) regdate : 2015-01-01, enddate : 2015-04-01
 	 * @param HashMap<String, String>
 	 * @return int
@@ -204,8 +204,8 @@ public class VctManager {
 	}
 	
 	/**
-	 * ½ºÄÉÁì¸µ¿¡ ÀÇÇÑ ¿¬Â÷ÈŞ°¡ ÀÚµ¿ °»½Å ¸Ş¼Òµå1
-	 * vct Å×ÀÌºí¿¡¼­ ¿¬Â÷ÈŞ°¡ ÀÜ·®À» Á¶È¸
+	 * ìŠ¤ì¼€ì¥´ë§ì— ì˜í•œ ì—°ì°¨íœ´ê°€ ìë™ ê°±ì‹  ë©”ì†Œë“œ1
+	 * vct í…Œì´ë¸”ì—ì„œ ì—°ì°¨íœ´ê°€ ì”ëŸ‰ì„ ì¡°íšŒ
 	 * @param String
 	 * @return List<VctVo>
 	 */
@@ -218,8 +218,8 @@ public class VctManager {
 	}
 	
 	/**
-	 * ½ºÄÉÁì¸µ¿¡ ÀÇÇÑ ¿¬Â÷ÈŞ°¡ ÀÚµ¿ °»½Å ¸Ş¼Òµå2
-	 * ¿¬ ÃÊ¿¡ »õ·Î¿î ´ëÃ¼ÈŞ°¡ Á¤º¸µéÀ» insert ¼öÇà
+	 * ìŠ¤ì¼€ì¥´ë§ì— ì˜í•œ ì—°ì°¨íœ´ê°€ ìë™ ê°±ì‹  ë©”ì†Œë“œ2
+	 * ì—° ì´ˆì— ìƒˆë¡œìš´ ëŒ€ì²´íœ´ê°€ ì •ë³´ë“¤ì„ insert ìˆ˜í–‰
 	 * @param VctVo
 	 * @return int
 	 */
@@ -232,8 +232,8 @@ public class VctManager {
 	}
 	
 	/**
-	 * ½ºÄÉÁì¸µ¿¡ ÀÇÇÑ ¿¬Â÷ÈŞ°¡ ÀÚµ¿ °»½Å ¸Ş¼Òµå3
-	 * vct_confirm Å×ÀÌºí¿¡¼­ ¿¬Â÷ÈŞ°¡ ½ÅÃ» Á¤º¸µéÀ» Ãë¼ÒÇÔ [ status = 'N' À¸·Î º¯°æ ]
+	 * ìŠ¤ì¼€ì¥´ë§ì— ì˜í•œ ì—°ì°¨íœ´ê°€ ìë™ ê°±ì‹  ë©”ì†Œë“œ3
+	 * vct_confirm í…Œì´ë¸”ì—ì„œ ì—°ì°¨íœ´ê°€ ì‹ ì²­ ì •ë³´ë“¤ì„ ì·¨ì†Œí•¨ [ status = 'N' ìœ¼ë¡œ ë³€ê²½ ]
 	 * @return int
 	 */
 	public static int schedulingAvct3() {
@@ -245,7 +245,7 @@ public class VctManager {
 	}
 	
 	/**
-	 * ³²Àº ÈŞ°¡ ½Ã°£À» Á¶È¸ÇÏ´Â ¸Ş¼Òµå
+	 * ë‚¨ì€ íœ´ê°€ ì‹œê°„ì„ ì¡°íšŒí•˜ëŠ” ë©”ì†Œë“œ
 	 * @param VctVo
 	 * @return VctVo
 	 */
@@ -258,7 +258,7 @@ public class VctManager {
 	}
 	
 	/**
-	 * ÈŞ°¡ ½ÅÃ»½Ã insert ¼öÇàÇÏ´Â ¸Ş¼Òµå
+	 * íœ´ê°€ ì‹ ì²­ì‹œ insert ìˆ˜í–‰í•˜ëŠ” ë©”ì†Œë“œ
 	 * @param RVConfirmVo
 	 * @return int
 	 */
@@ -271,7 +271,7 @@ public class VctManager {
 	}
 	
 	/**
-	 * °ü¸®ÀÚ°¡ ÈŞ°¡ ½ÅÃ» ÇöÈ²À» Á¶È¸ÇÏ´Â Äõ¸®
+	 * ê´€ë¦¬ìê°€ íœ´ê°€ ì‹ ì²­ í˜„í™©ì„ ì¡°íšŒí•˜ëŠ” ì¿¼ë¦¬
 	 * @param int
 	 * @return List<VConfirmVo>
 	 */
@@ -284,7 +284,7 @@ public class VctManager {
 	}
 	
 	/**
-	 * vctcount°ªÀ» Á¶È¸ÇÏ±â À§ÇØ vct Å×ÀÌºíÀ» Á¶È¸ÇÏ´Â ¸Ş¼Òµå
+	 * vctcountê°’ì„ ì¡°íšŒí•˜ê¸° ìœ„í•´ vct í…Œì´ë¸”ì„ ì¡°íšŒí•˜ëŠ” ë©”ì†Œë“œ
 	 * @param int
 	 * @return VctVo
 	 */
@@ -297,7 +297,7 @@ public class VctManager {
 	}
 	
 	/**
-	 * vct.vctcount, vct_confirm.status='Y' UPDATE ¸Ş¼Òµå
+	 * vct.vctcount, vct_confirm.status='Y' UPDATE ë©”ì†Œë“œ
 	 * @param VConfirmVo
 	 * @return int
 	 */
@@ -310,7 +310,7 @@ public class VctManager {
 	}
 	
 	/**
-	 * vct_confirm.status = 'Y' ¸¸ ¼öÇàÇÏ´Â ¸Ş¼Òµå (°æÁ¶(Æ¯º°)ÈŞ°¡ÀÏ °æ¿ì »ç¿ëÇÏ´Â ¸Ş¼Òµå)
+	 * vct_confirm.status = 'Y' ë§Œ ìˆ˜í–‰í•˜ëŠ” ë©”ì†Œë“œ (ê²½ì¡°(íŠ¹ë³„)íœ´ê°€ì¼ ê²½ìš° ì‚¬ìš©í•˜ëŠ” ë©”ì†Œë“œ)
 	 * @param VConfirmVo
 	 * @return int
 	 */
@@ -323,7 +323,7 @@ public class VctManager {
 	}
 	
 	/**
-	 * ÈŞ°¡ »ç¿ë ½ÂÀÎ½Ã »ç¿ëÇÑ Á¤º¸¸¦ history¿¡ ³²±â´Â ¸Ş¼Òµå
+	 * íœ´ê°€ ì‚¬ìš© ìŠ¹ì¸ì‹œ ì‚¬ìš©í•œ ì •ë³´ë¥¼ historyì— ë‚¨ê¸°ëŠ” ë©”ì†Œë“œ
 	 * @param VConfirmVo
 	 * @return int
 	 */
@@ -336,7 +336,7 @@ public class VctManager {
 	}
 	
 	/**
-	 * Á¤º¸ ÆäÀÌÁö¿¡¼­ ÈŞ°¡ »ç¿ë ÇöÈ²¿¡ ´ëÇÑ ³»¿ëÀ» Ãâ·ÂÇÏ´Â ¸Ş¼Òµå 
+	 * ì •ë³´ í˜ì´ì§€ì—ì„œ íœ´ê°€ ì‚¬ìš© í˜„í™©ì— ëŒ€í•œ ë‚´ìš©ì„ ì¶œë ¥í•˜ëŠ” ë©”ì†Œë“œ 
 	 * @param String
 	 * @return List<VConfirmVo>
 	 */
@@ -349,7 +349,7 @@ public class VctManager {
 	}
 	
 	/**
-	 * Á¤º¸ ÆäÀÌÁö¿¡¼­ ´ëÃ¼ÈŞ°¡ Á¤»ê Á¤º¸¸¦ ºĞ±âº°·Î º¸¿©ÁÖ´Â ¸Ş¼Òµå
+	 * ì •ë³´ í˜ì´ì§€ì—ì„œ ëŒ€ì²´íœ´ê°€ ì •ì‚° ì •ë³´ë¥¼ ë¶„ê¸°ë³„ë¡œ ë³´ì—¬ì£¼ëŠ” ë©”ì†Œë“œ
 	 * @param String
 	 * @return List<VctVo>
 	 */
@@ -362,7 +362,7 @@ public class VctManager {
 	}
 	
 	/**
-	 * Á¤º¸ ÆäÀÌÁö¿¡¼­ ´ëÃ¼ÈŞ°¡ »ó¼¼º¸±âÀÇ Åë°èÁ¤º¸¸¦ º¸¿©ÁÖ´Â ¸Ş¼Òµå
+	 * ì •ë³´ í˜ì´ì§€ì—ì„œ ëŒ€ì²´íœ´ê°€ ìƒì„¸ë³´ê¸°ì˜ í†µê³„ì •ë³´ë¥¼ ë³´ì—¬ì£¼ëŠ” ë©”ì†Œë“œ
 	 * @param int
 	 * @param String
 	 * @return List<CostStaticsVo>
@@ -380,7 +380,7 @@ public class VctManager {
 	}
 	
 	/**
-	 * Á¤º¸ ÆäÀÌÁö¿¡¼­ ´ëÃ¼ÈŞ°¡ »ó¼¼º¸±âÀÇ ¼¼ºÎ ¸®½ºÆ®¸¦ º¸¿©ÁÖ´Â ¸Ş¼Òµå
+	 * ì •ë³´ í˜ì´ì§€ì—ì„œ ëŒ€ì²´íœ´ê°€ ìƒì„¸ë³´ê¸°ì˜ ì„¸ë¶€ ë¦¬ìŠ¤íŠ¸ë¥¼ ë³´ì—¬ì£¼ëŠ” ë©”ì†Œë“œ
 	 * @param int
 	 * @param String
 	 * @return List<RVConfirmVo>
@@ -398,7 +398,7 @@ public class VctManager {
 	}
 	
 	/**
-	 * ÈŞ°¡ ½ÅÃ», ½ÂÀÎ, °ÅÀı µî ¸®½ºÆ®¸¦ º¸¿©ÁÙ ¸Ş¼Òµå
+	 * íœ´ê°€ ì‹ ì²­, ìŠ¹ì¸, ê±°ì ˆ ë“± ë¦¬ìŠ¤íŠ¸ë¥¼ ë³´ì—¬ì¤„ ë©”ì†Œë“œ
 	 * @param int
 	 * @return VConfirmVo
 	 */
@@ -411,7 +411,7 @@ public class VctManager {
 	}
 	
 	/**
-	 * ÈŞ°¡ ½ÅÃ»ÇÑ ³»¿ëÀ» ¼öÁ¤ÇÏ°Å³ª »èÁ¦ÇÒ °æ¿ì, ÈŞ°¡ Á¤º¸¸¦ Á¶È¸ÇÏ´Â ¸Ş¼Òµå
+	 * íœ´ê°€ ì‹ ì²­í•œ ë‚´ìš©ì„ ìˆ˜ì •í•˜ê±°ë‚˜ ì‚­ì œí•  ê²½ìš°, íœ´ê°€ ì •ë³´ë¥¼ ì¡°íšŒí•˜ëŠ” ë©”ì†Œë“œ
 	 * @param int
 	 * @return VConfirmVo
 	 */
@@ -424,7 +424,7 @@ public class VctManager {
 	}
 	
 	/**
-	 * ÈŞ°¡ ½ÅÃ»ÇÑ ³»¿ëÀ» »èÁ¦ÇÏ´Â ¸Ş¼Òµå
+	 * íœ´ê°€ ì‹ ì²­í•œ ë‚´ìš©ì„ ì‚­ì œí•˜ëŠ” ë©”ì†Œë“œ
 	 * @param int
 	 * @return int
 	 */
@@ -435,17 +435,17 @@ public class VctManager {
 		System.out.println(vVo.toString());
 		
 		if(vVo.getStatus().equals("Y")) {
-			// Y ÀÏ °æ¿ì ½ÂÀÎÀÌ µÈ ³ğÀÌ±â ¶§¹®¿¡ vct.vctcount + vct_confirm.vct_timeÀ» vct.vctcount¿¡ ³Ö´Â´Ù
+			// Y ì¼ ê²½ìš° ìŠ¹ì¸ì´ ëœ ë†ˆì´ê¸° ë•Œë¬¸ì— vct.vctcount + vct_confirm.vct_timeì„ vct.vctcountì— ë„£ëŠ”ë‹¤
 			vVo.setRemain_vct_time(vVo.getRemain_vct_time() + vVo.getVct_time());
 			result = session.update("vct.vctDel2", vVo);
-			// update ¼º°ø ½Ã vct_confirm delete ¼öÇà
+			// update ì„±ê³µ ì‹œ vct_confirm delete ìˆ˜í–‰
 			if(result > 0) {
 				result = session.delete("vct.vctDel3", id);
 				if(result > 0) session.commit();
 				else session.rollback();
 			} 
 		} else {
-			// vct_confirm delete ¼öÇà
+			// vct_confirm delete ìˆ˜í–‰
 			result = session.delete("vct.vctDel3", id);
 			if(result > 0) session.commit();
 			else session.rollback();
@@ -457,7 +457,7 @@ public class VctManager {
 	}
 	
 	/**
-	 * ÈŞ°¡ ½ÅÃ»ÇÑ ³»¿ëÀ» ¼öÁ¤ÇÏ´Â ¸Ş¼Òµå
+	 * íœ´ê°€ ì‹ ì²­í•œ ë‚´ìš©ì„ ìˆ˜ì •í•˜ëŠ” ë©”ì†Œë“œ
 	 * @param VConfirmVo
 	 * @return int
 	 */
@@ -470,7 +470,7 @@ public class VctManager {
 	}
 	
 	/**
-	 * ´ëÃ¼ÈŞ°¡ ½ÅÃ»½Ã Æ®·¡Å· ¼­ºñ½º Á¤º¸¸¦ °¡Á®¿À´Â ¸Ş¼Òµå
+	 * ëŒ€ì²´íœ´ê°€ ì‹ ì²­ì‹œ íŠ¸ë˜í‚¹ ì„œë¹„ìŠ¤ ì •ë³´ë¥¼ ê°€ì ¸ì˜¤ëŠ” ë©”ì†Œë“œ
 	 * @param RVConfirmVo
 	 * @return RVConfirmVo
 	 */
@@ -483,7 +483,7 @@ public class VctManager {
 	}
 	
 	/**
-	 * ´ëÃ¼ÈŞ°¡ ½ÅÃ»½Ã ¼±ÅÃµÈ ID¿¡ ÇØ´çÇÏ´Â rvct_confirm Å×ÀÌºíÀÇ µ¥ÀÌÅÍµéÀ» Á¶È¸
+	 * ëŒ€ì²´íœ´ê°€ ì‹ ì²­ì‹œ ì„ íƒëœ IDì— í•´ë‹¹í•˜ëŠ” rvct_confirm í…Œì´ë¸”ì˜ ë°ì´í„°ë“¤ì„ ì¡°íšŒ
 	 * @param int
 	 * @return RVConfirmVo
 	 */
@@ -496,7 +496,7 @@ public class VctManager {
 	}
 	
 	/**
-	 * °ü¸®ÀÚ ÆäÀÌÁö¿¡¼­ ÈŞ°¡ ¼öÁ¤À» À§ÇØ ÈŞ°¡ ¸®½ºÆ®¸¦ Á¶È¸ÇÏ´Â Äõ¸®
+	 * ê´€ë¦¬ì í˜ì´ì§€ì—ì„œ íœ´ê°€ ìˆ˜ì •ì„ ìœ„í•´ íœ´ê°€ ë¦¬ìŠ¤íŠ¸ë¥¼ ì¡°íšŒí•˜ëŠ” ì¿¼ë¦¬
 	 * @param Map<String, String>
 	 * @return List<VctVo>
 	 */
@@ -509,7 +509,7 @@ public class VctManager {
 	}
 	
 	/**
-	 * °ü¸®ÀÚ ÆäÀÌÁö¿¡¼­ ¼öÁ¤À» ´­·¶À» °æ¿ì, ÈŞ°¡ ½ÅÃ» ³»¿ëµéÀ» ¼öÁ¤ÇÏµµ·Ï ÆË¾÷Ã¢ÀÌ Ãâ·ÂµÉ ¶§ ÇØ´ç vct_id¸¦ ÅëÇØ SELECT ¸¦ ¼öÇà 
+	 * ê´€ë¦¬ì í˜ì´ì§€ì—ì„œ ìˆ˜ì •ì„ ëˆŒë €ì„ ê²½ìš°, íœ´ê°€ ì‹ ì²­ ë‚´ìš©ë“¤ì„ ìˆ˜ì •í•˜ë„ë¡ íŒì—…ì°½ì´ ì¶œë ¥ë  ë•Œ í•´ë‹¹ vct_idë¥¼ í†µí•´ SELECT ë¥¼ ìˆ˜í–‰ 
 	 * @param int
 	 * @return List<VConfirmVo>
 	 */
@@ -522,7 +522,7 @@ public class VctManager {
 	}
 	
 	/**
-	 * °ü¸®ÀÚ ÆäÀÌÁö¿¡¼­ ¼öÁ¤µÈ ÈŞ°¡ ¼öÄ¡¸¦ vct¿Í vct_confirm Å×ÀÌºí¿¡ update ¼öÇàÇÏ´Â ¸Ş¼Òµå
+	 * ê´€ë¦¬ì í˜ì´ì§€ì—ì„œ ìˆ˜ì •ëœ íœ´ê°€ ìˆ˜ì¹˜ë¥¼ vctì™€ vct_confirm í…Œì´ë¸”ì— update ìˆ˜í–‰í•˜ëŠ” ë©”ì†Œë“œ
 	 * @param Map<String, VctVo>
 	 * @return int
 	 */
@@ -532,12 +532,12 @@ public class VctManager {
 		SqlSession session = sqlMapper.openSession();
 		int result = 0;
 		
-		if(type == 0) {	// vct¸¸ ¼öÁ¤
+		if(type == 0) {	// vctë§Œ ìˆ˜ì •
 			result = session.update("adminPageUpdateVct", vctVo);
 			if(result > 0) session.commit();
 			else session.rollback();
 			
-		} else if(type == 1) {	// vct_confirm, vct ¸ğµÎ ¼öÁ¤
+		} else if(type == 1) {	// vct_confirm, vct ëª¨ë‘ ìˆ˜ì •
 			VctVo vctConfirmVo = map.get("VctConfirm");
 			
 			result = session.update("vct.adminPageUpdateVctConfirm", vctConfirmVo);

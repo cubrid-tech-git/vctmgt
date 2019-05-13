@@ -5,7 +5,7 @@ public class ReplaceData {
 	 * 
 	 * @param String dept
 	 * @return int
-	 * @see ºÎ¼­¸íÀ» ºÎ¼­ÄÚµå·Î º¯È¯ÇÏ´Â ¸Ş¼Òµå
+	 * @see ë¶€ì„œëª…ì„ ë¶€ì„œì½”ë“œë¡œ ë³€í™˜í•˜ëŠ” ë©”ì†Œë“œ
 	 */
 	public static int mappingDept(String dept) {
 		int result = 0;
@@ -26,11 +26,11 @@ public class ReplaceData {
 	public static String dnoToDept(int dno) {
 		String result = "";
 		if(dno == 1 || dno == 3) {
-			result = "°ü¸®";
+			result = "ê´€ë¦¬";
 		} else if(dno == 2) {
-			result = "¿µ¾÷";
+			result = "ì˜ì—…";
 		} else if(dno == 4) {
-			result = "±â¼ú";
+			result = "ê¸°ìˆ ";
 		}
 		
 		return result;
@@ -40,7 +40,7 @@ public class ReplaceData {
 	 * 
 	 * @param int sec
 	 * @return String time
-	 * @see ÃÊ¸¦ ÀÔ·Â¹Ş¾Æ 00:00:00 ÇüÅÂ·Î ½Ã°£À» ¸®ÅÏÇÏ´Â ¸Ş¼Òµå 
+	 * @see ì´ˆë¥¼ ì…ë ¥ë°›ì•„ 00:00:00 í˜•íƒœë¡œ ì‹œê°„ì„ ë¦¬í„´í•˜ëŠ” ë©”ì†Œë“œ 
 	 */
 	public static String secToTime(int sec) {
 		int iHour = 0;
@@ -76,7 +76,7 @@ public class ReplaceData {
 	 * 
 	 * @param String time
 	 * @return int sec
-	 * @see 00:00:00 ÇüÅÂÀÇ ½Ã°£À» sec·Î ¸®ÅÏÇÏ´Â ¸Ş¼Òµå
+	 * @see 00:00:00 í˜•íƒœì˜ ì‹œê°„ì„ secë¡œ ë¦¬í„´í•˜ëŠ” ë©”ì†Œë“œ
 	 */
 	public static int timeToSec(String time) {
 		String t[] = time.split(":");
@@ -93,13 +93,13 @@ public class ReplaceData {
 		String result = "";
 		
 		if("N".equals(status)) {
-			result = "¹Ìµî·Ï";
+			result = "ë¯¸ë“±ë¡";
 		} else if("W".equals(status)) {
-			result = "´ë±â";
+			result = "ëŒ€ê¸°";
 		} else if("C".equals(status)) {
-			result = "ºÒ°¡";
+			result = "ë¶ˆê°€";
 		} else if("O".equals(status)) {
-			result = "½ÂÀÎ";
+			result = "ìŠ¹ì¸";
 		}
 		
 		return result;

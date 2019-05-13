@@ -11,73 +11,73 @@ import com.cubrid.vo.VctVo;
 public interface VctLogging {
 
 	/**
-	 * ´ëÃ¼ÈŞ°¡ µî·Ï logging
+	 * ëŒ€ì²´íœ´ê°€ ë“±ë¡ logging
 	 */
 	public void rvctRegLogging(RVConfirmVo vo);
 	
 	/**
-	 * ´ëÃ¼ÈŞ°¡ µî·ÏµÈ ³»¿ë ¼öÁ¤ logging
+	 * ëŒ€ì²´íœ´ê°€ ë“±ë¡ëœ ë‚´ìš© ìˆ˜ì • logging
 	 */
 	public void rvctRegModifyLogging(RVConfirmVo vo);
 	
 	/**
-	 * ´ëÃ¼ÈŞ°¡ ½ÂÀÎ / °ÅÀı logging
+	 * ëŒ€ì²´íœ´ê°€ ìŠ¹ì¸ / ê±°ì ˆ logging
 	 */
 	public void rvctRegYNLogging(RVConfirmVo vo);
 	
 	/**
-	 * ´ëÃ¼ÈŞ°¡ »ç¿ë ½ÅÃ» logging
+	 * ëŒ€ì²´íœ´ê°€ ì‚¬ìš© ì‹ ì²­ logging
 	 */
 	public void rvctUseLogging(VConfirmVo vo);
 	
 	/**
-	 * ´ëÃ¼ÈŞ°¡ »ç¿ë ½ÂÀÎ / °ÅÀı logging
+	 * ëŒ€ì²´íœ´ê°€ ì‚¬ìš© ìŠ¹ì¸ / ê±°ì ˆ logging
 	 */
 	public void rvctUseYNLogging(VConfirmVo vo);
 	
 	/**
-	 * ´ëÃ¼ÈŞ°¡ °»½Å logging 
+	 * ëŒ€ì²´íœ´ê°€ ê°±ì‹  logging 
 	 */
 	public void rvctRenewalLogging(RVConfirmVo vo);
 	
 	/**
-	 * ¿¬Â÷ÈŞ°¡ °»½Å logging
+	 * ì—°ì°¨íœ´ê°€ ê°±ì‹  logging
 	 */
 	public void vctRenewalLogging(VctVo vo);
 	
 	/**
-	 * ¿¬Â÷ÈŞ°¡ »ç¿ë ½ÅÃ» logging
+	 * ì—°ì°¨íœ´ê°€ ì‚¬ìš© ì‹ ì²­ logging
 	 */
 	public void vctUseLogging(VConfirmVo vo);
 	
 	/**
-	 * ¿¬Â÷ÈŞ°¡ »ç¿ë ½ÂÀÎ / °ÅÀı logging
+	 * ì—°ì°¨íœ´ê°€ ì‚¬ìš© ìŠ¹ì¸ / ê±°ì ˆ logging
 	 */
 	public void vctUseYNLogging(VConfirmVo vo);
 	
 	/**
-	 * »ç¿ëÀÚ µî·Ï logging
+	 * ì‚¬ìš©ì ë“±ë¡ logging
 	 */
 	public void userAddLogging(UserVo vo);
 	
 	/**
-	 * »ç¿ëÀÚ »èÁ¦ logging 
+	 * ì‚¬ìš©ì ì‚­ì œ logging 
 	 */
 	public void userDelLogging(UserVo vo);
 	
 	/**
-	 * ·Î±× ³»¿ëÀ» Ãâ·ÂÇÏ´Â ¸Ş¼Òµå
+	 * ë¡œê·¸ ë‚´ìš©ì„ ì¶œë ¥í•˜ëŠ” ë©”ì†Œë“œ
 	 * @return LogVo
 	 */
 	public List<LogVo> printLog(LogVo vo);
 	
 	/**
-	 * °ü¸®ÀÚ ·Î±×ÀÎ ÀÌ·Â logging
+	 * ê´€ë¦¬ì ë¡œê·¸ì¸ ì´ë ¥ logging
 	 */
 	public void adminLoginLogging(UserVo vo);
 	
 	/**
-	 * °ü¸®ÀÚ ºñ¹Ğ¹øÈ£ º¯°æ logging
+	 * ê´€ë¦¬ì ë¹„ë°€ë²ˆí˜¸ ë³€ê²½ logging
 	 */
 	public void adminChangePWLogging(UserVo vo);
 }

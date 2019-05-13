@@ -22,7 +22,7 @@ public class VctDaoImpl implements VctDao {
 		String start = CurrentTime.startYear();
 		String end = null;
 		
-		if(month % 3 == 1 && day <= 10) { // ∫–±‚ Ω√¿€¿œ ∞ÊøÏ
+		if(month % 3 == 1 && day <= 10) { // Î∂ÑÍ∏∞ ÏãúÏûëÏùº Í≤ΩÏö∞
 			end = CurrentTime.makeEndLastQuater();
 		} else {
 			end = CurrentTime.makeEndQuater();
@@ -175,25 +175,25 @@ public class VctDaoImpl implements VctDao {
 		for(VConfirmVo vo : list) {
 			result.append("{ ");
 			if(vo.getVct_type().equals("R")) {
-				result.append("title : '¥Î√º)" + vo.getEname() + "', ");
+				result.append("title : 'ÎåÄÏ≤¥)" + vo.getEname() + "', ");
 				result.append("start : '" + vo.getFrom_vctdate() + "', ");
 				result.append("end : '" + CurrentTime.makeFullCalendarEndDate(vo.getTo_vctdate()) + "', ");
-				result.append("color : '#660033', content : '≥Ø¬• : " + vo.getFrom_vctdate() + " ~ " + vo.getTo_vctdate() + " (" + vo.getVct_time() + "Ω√∞£)\\n" + vo.getReason().split(" <br><br>")[0] + "' ");
+				result.append("color : '#660033', content : 'ÎÇ†Ïßú : " + vo.getFrom_vctdate() + " ~ " + vo.getTo_vctdate() + " (" + vo.getVct_time() + "ÏãúÍ∞Ñ)\\n" + vo.getReason().split(" <br><br>")[0] + "' ");
 			} else if(vo.getVct_type().equals("A")) {
-				result.append("title : 'ø¨¬˜)" + vo.getEname() + "', ");
+				result.append("title : 'Ïó∞Ï∞®)" + vo.getEname() + "', ");
 				result.append("start : '" + vo.getFrom_vctdate() + "', ");
 				result.append("end : '" + CurrentTime.makeFullCalendarEndDate(vo.getTo_vctdate()) + "', ");
-				result.append("content : '≥Ø¬• : " + vo.getFrom_vctdate() + " ~ " + vo.getTo_vctdate() + " (" + vo.getVct_time() + "¿œ)\\n" + vo.getReason() + "' ");
+				result.append("content : 'ÎÇ†Ïßú : " + vo.getFrom_vctdate() + " ~ " + vo.getTo_vctdate() + " (" + vo.getVct_time() + "Ïùº)\\n" + vo.getReason() + "' ");
 			} else if(vo.getVct_type().equals("S")) {
-				result.append("title : '∞Ê¡∂)" + vo.getEname() + "', ");
+				result.append("title : 'Í≤ΩÏ°∞)" + vo.getEname() + "', ");
 				result.append("start : '" + vo.getFrom_vctdate() + "', ");
 				result.append("end : '" + CurrentTime.makeFullCalendarEndDate(vo.getTo_vctdate()) + "', ");
-				result.append("color : '#2E8B57', content : '≥Ø¬• : " + vo.getFrom_vctdate() + " ~ " + vo.getTo_vctdate() + " (" + vo.getVct_time() + "¿œ)\\n" + vo.getReason() + "' ");
+				result.append("color : '#2E8B57', content : 'ÎÇ†Ïßú : " + vo.getFrom_vctdate() + " ~ " + vo.getTo_vctdate() + " (" + vo.getVct_time() + "Ïùº)\\n" + vo.getReason() + "' ");
 			} else if(vo.getVct_type().equals("C")) {
-				result.append("title : '∫π«’)" + vo.getEname() + "', ");
+				result.append("title : 'Î≥µÌï©)" + vo.getEname() + "', ");
 				result.append("start : '" + vo.getFrom_vctdate() + "', ");
 				result.append("end : '" + CurrentTime.makeFullCalendarEndDate(vo.getTo_vctdate()) + "', ");
-				result.append("color : '#FFE4E1', content : '≥Ø¬• : " + vo.getFrom_vctdate() + " ~ " + vo.getTo_vctdate() + " (" + vo.getVct_time() + "¿œ)\\n" + vo.getReason() + "' ");
+				result.append("color : '#FFE4E1', content : 'ÎÇ†Ïßú : " + vo.getFrom_vctdate() + " ~ " + vo.getTo_vctdate() + " (" + vo.getVct_time() + "Ïùº)\\n" + vo.getReason() + "' ");
 			}
 			result.append(" },");
 		}
@@ -209,14 +209,14 @@ public class VctDaoImpl implements VctDao {
 
 	@Override
 	public int insertVctConfirmComplex(VConfirmVo vo) {
-		// 1. ø¨¬˜»ﬁ∞° confirm ∏∏µÈ±‚
+		// 1. Ïó∞Ï∞®Ìú¥Í∞Ä confirm ÎßåÎì§Í∏∞
 		VConfirmVo avConfirmVo = vo;
 		avConfirmVo.setVct_id((int)vo.getComplexMap().get("avctId"));
 		avConfirmVo.setVct_time((float)vo.getComplexMap().get("avctTime"));
 		System.out.println("-- avConfirmVo --");
 		System.out.println(avConfirmVo.toString());
 		
-		// 2. ¥Î√º»ﬁ∞° confirm ∏∏µÈ±‚
+		// 2. ÎåÄÏ≤¥Ìú¥Í∞Ä confirm ÎßåÎì§Í∏∞
 		VConfirmVo rvConfirmVo = vo;
 		rvConfirmVo.setVct_id((int)vo.getComplexMap().get("rvctId"));
 		rvConfirmVo.setVct_time((float)vo.getComplexMap().get("rvctTime"));

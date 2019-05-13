@@ -3,19 +3,19 @@ package com.cubrid.util;
 import org.apache.commons.codec.binary.Base64;
 
 /**
- * ºñ¹Ð¹øÈ£¸¦ ¾ÏÈ£È­ /º¹È£È­ ±â´É ±¸Çö
+ * ë¹„ë°€ë²ˆí˜¸ë¥¼ ì•”í˜¸í™” /ë³µí˜¸í™” ê¸°ëŠ¥ êµ¬í˜„
  * */
 public class KeyGen {
 	
 	/**
-	 * ºñ¹Ð¹øÈ£ ¾ÏÈ£È­
+	 * ë¹„ë°€ë²ˆí˜¸ ì•”í˜¸í™”
 	 * */
 	public static String enc(String userpass){
 		return Base64.encodeBase64String(userpass.getBytes());
 	}
 	
 	/**
-	 * ºñ¹Ð¹øÈ£ º¹È£È­
+	 * ë¹„ë°€ë²ˆí˜¸ ë³µí˜¸í™”
 	 * */
 	public static String dec(String userpass){
 		return new String(Base64.decodeBase64(userpass));

@@ -11,91 +11,91 @@ import com.cubrid.vo.VctVo;
 public interface UserDao {
 	
 	/**
-	 * cubrid ¸â¹ö¸¦ Á¶È¸ÇÏ´Â ¸Ş¼Òµå(ÀüÃ¼ Á¶È¸´Â eno:=0)
+	 * cubrid ë©¤ë²„ë¥¼ ì¡°íšŒí•˜ëŠ” ë©”ì†Œë“œ(ì „ì²´ ì¡°íšŒëŠ” eno:=0)
 	 * @param int
 	 * @return List
 	 */
 	public List<UserVo> selectCubUser(int eno);
 	
 	/**
-	 * ½Å±Ô »ç¿øÀ» µî·ÏÇÏ´Â ¸Ş¼Òµå
+	 * ì‹ ê·œ ì‚¬ì›ì„ ë“±ë¡í•˜ëŠ” ë©”ì†Œë“œ
 	 * @param UserVo
 	 * @return
 	 */
 	public int regCubUser(UserVo vo);
 	
 	/**
-	 * °ü¸®ÀÚ ·Î±×ÀÎ È®ÀÎ ¸Ş¼Òµå
+	 * ê´€ë¦¬ì ë¡œê·¸ì¸ í™•ì¸ ë©”ì†Œë“œ
 	 * @param UserVo
 	 * @return String
 	 */
 	public UserVo selectLoginCheck(String ename);
 	
 	/**
-	 * »ç¹øÀ¸·Î °ü¸®ÀÚ Á¤º¸ °¡Á®¿À´Â ¸Ş¼Òµå
+	 * ì‚¬ë²ˆìœ¼ë¡œ ê´€ë¦¬ì ì •ë³´ ê°€ì ¸ì˜¤ëŠ” ë©”ì†Œë“œ
 	 * @param int
 	 * @return UserVo
 	 */
 	public UserVo selectAdmin(int eno);
 	
 	/**
-	 * °ü¸®ÀÚ ºñ¹Ğ¹øÈ£ º¯°æ ¸Ş¼Òµå
+	 * ê´€ë¦¬ì ë¹„ë°€ë²ˆí˜¸ ë³€ê²½ ë©”ì†Œë“œ
 	 * @param UserVo
 	 * @return int
 	 */
 	public int updateAdminPw(UserVo vo);
 	
 	/**
-	 * Áßº¹µÇÁö ¾Ê´Â ¸ğµç eno °ªÀ» Á¶È¸ÇÏ´Â ¸Ş¼Òµå 
+	 * ì¤‘ë³µë˜ì§€ ì•ŠëŠ” ëª¨ë“  eno ê°’ì„ ì¡°íšŒí•˜ëŠ” ë©”ì†Œë“œ 
 	 * @return List<UserVo>
 	 */
 	public List<UserVo> selectAllEno();
 	
 	/**
-	 * »ç¿ëÀÚ¸¦ »èÁ¦ÇÏ´Â ¸Ş¼Òµå
+	 * ì‚¬ìš©ìë¥¼ ì‚­ì œí•˜ëŠ” ë©”ì†Œë“œ
 	 * @param UserVo
 	 * @return int
 	 */
 	public int deleteUser(UserVo vo);
 	
 	/**
-	 * ¸ŞÀÏ ¹ß¼Û½Ã º¸³»´Â »ç¶÷ÀÇ eno¸¦ ÅëÇØ mail Á¤º¸µéÀ» Á¶È¸ÇÔ
-	 * ºñ¹Ğ¹øÈ£, ¹Ş´Â»ç¶÷, cc Á¤º¸
+	 * ë©”ì¼ ë°œì†¡ì‹œ ë³´ë‚´ëŠ” ì‚¬ëŒì˜ enoë¥¼ í†µí•´ mail ì •ë³´ë“¤ì„ ì¡°íšŒí•¨
+	 * ë¹„ë°€ë²ˆí˜¸, ë°›ëŠ”ì‚¬ëŒ, cc ì •ë³´
 	 * @param int
 	 * @return MailVo
 	 */
 	public MailVo selectMailInfo(int eno);
 	
 	/**
-	 * ´ëÃ¼ÈŞ°¡ µî·Ï ½ÂÀÎ½Ã ÇÊ¿äÇÑ Á¤º¸µéÀ» rvct_confirm Å×ÀÌºí¿¡¼­ Á¶È¸ÇÏ´Â ¸Ş¼Òµå
+	 * ëŒ€ì²´íœ´ê°€ ë“±ë¡ ìŠ¹ì¸ì‹œ í•„ìš”í•œ ì •ë³´ë“¤ì„ rvct_confirm í…Œì´ë¸”ì—ì„œ ì¡°íšŒí•˜ëŠ” ë©”ì†Œë“œ
 	 * @param int
 	 * @return RVConfirmVo
 	 */
 	public RVConfirmVo selectRVConfirmYNMail(int eno);
 	
 	/**
-	 * ÈŞ°¡ ½ÂÀÎ ¹× ¹Ì½ÂÀÎ½Ã vct_confirm Å×ÀÌºí¿¡¼­ Á¶È¸ÇÏ´Â ¸Ş¼Òµå
+	 * íœ´ê°€ ìŠ¹ì¸ ë° ë¯¸ìŠ¹ì¸ì‹œ vct_confirm í…Œì´ë¸”ì—ì„œ ì¡°íšŒí•˜ëŠ” ë©”ì†Œë“œ
 	 * @param int
 	 * @return VConfirmVo
 	 */
 	public VConfirmVo selectVctConfirmYNMail(int id);
 	
 	/**
-	 * emailÀÇ ºñ¹Ğ¹øÈ£¸¦ º¯°æÇÏ´Â ¸Ş¼Òµå
+	 * emailì˜ ë¹„ë°€ë²ˆí˜¸ë¥¼ ë³€ê²½í•˜ëŠ” ë©”ì†Œë“œ
 	 * @param UserVo
 	 * @return int
 	 */
 	public int updateEmailPassword(UserVo vo);
 	
 	/**
-	 * °ü¸®ÀÚ°¡ »ç¿ëÀÚ Á¤º¸ ¼öÁ¤½Ã UPDATE ¼öÇàÇÏ´Â ¸Ş¼Òµå
+	 * ê´€ë¦¬ìê°€ ì‚¬ìš©ì ì •ë³´ ìˆ˜ì •ì‹œ UPDATE ìˆ˜í–‰í•˜ëŠ” ë©”ì†Œë“œ
 	 * @param UserVo
 	 * @return int
 	 */
 	public int cubUserUpdate(UserVo vo);
 	
 	/**
-	 * °ü¸®ÀÚ°¡ adminÀÇ ±ÇÇÑÀ» º¯°æÇÒ ¶§ »ç¿ëÇÏ´Â ¸Ş¼Òµå
+	 * ê´€ë¦¬ìê°€ adminì˜ ê¶Œí•œì„ ë³€ê²½í•  ë•Œ ì‚¬ìš©í•˜ëŠ” ë©”ì†Œë“œ
 	 * @param UserVo
 	 * @return int
 	 */

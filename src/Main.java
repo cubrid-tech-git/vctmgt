@@ -6,21 +6,21 @@ import com.cubrid.vo.RVConfirmVo;
 
 public class Main {
 	public static void main(String[] args) {
-//		// senderÀÇ eno¸¦ ÅëÇØ email_password¿Í º»ÀÎ email, manager, cc id °¡Á®¿À±â
+//		// senderì˜ enoë¥¼ í†µí•´ email_passwordì™€ ë³¸ì¸ email, manager, cc id ê°€ì ¸ì˜¤ê¸°
 //		MailVo mailVo = UserManager.selectMailInfo(16);
 //		System.out.println(mailVo.getEno() + "\t" + mailVo.getSender() + "\t" + mailVo.getSender_password() + "\t" + mailVo.getReceiver() + "\t" + mailVo.getManager_ename() + "\t" + mailVo.getDno() + "\t" + mailVo.getCc());
-//		//RVConfirmVo °´Ã¼ ¸¸µé±â
+//		//RVConfirmVo ê°ì²´ ë§Œë“¤ê¸°
 //		RVConfirmVo rVo = new RVConfirmVo();
-//		rVo.setSite("Å×½ºÆ®»çÀÌÆ®");
+//		rVo.setSite("í…ŒìŠ¤íŠ¸ì‚¬ì´íŠ¸");
 //		rVo.setPkey("CUBRID-key");
 //		rVo.setWork_date("2015-07-10 21:00");
 //		rVo.setWork_end_date("2015-07-11 00:00");
 //		rVo.setWork_time(3);
-//		rVo.setReason("ÀÌ°Å½¼ Å×½ºÆ®<br>Å×½ºÆ®!");
+//		rVo.setReason("ì´ê±°ìŠ¨ í…ŒìŠ¤íŠ¸<br>í…ŒìŠ¤íŠ¸!");
 //		mailVo.setVo(rVo);
 //		CubMailSender.makeSendType("RConfirm", mailVo);
-//		System.out.println("receiver º¯°æ -> seunghun_kim@naver.com");
-//		System.out.println("cc º¯°æ -> seunghun_kim@cubrid.com");
+//		System.out.println("receiver ë³€ê²½ -> seunghun_kim@naver.com");
+//		System.out.println("cc ë³€ê²½ -> seunghun_kim@cubrid.com");
 //		mailVo.setReceiver("seunghun_kim@naver.com");
 //		mailVo.setCc("seunghun_kim@cubrid.com");
 ////		mailVo.setCc(null);
@@ -31,8 +31,8 @@ public class Main {
 		mailVo.setReceiver("seunghun_kim@naver.com");
 		mailVo.setSender_password("c2V1bmdodW5fa2ltMTIz");
 		mailVo.setCc("coke0803@hotmail.com");
-		mailVo.setSubject("testÅ×½ºÆ®");
-		mailVo.setContent("ÀÌ°ÍÀº Å×½ºÆ®");
+		mailVo.setSubject("testí…ŒìŠ¤íŠ¸");
+		mailVo.setContent("ì´ê²ƒì€ í…ŒìŠ¤íŠ¸");
 		CubMailSender.send(mailVo);
 	}
 }

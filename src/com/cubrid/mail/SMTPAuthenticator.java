@@ -14,8 +14,8 @@ public class SMTPAuthenticator extends Authenticator {
 	
 	public PasswordAuthentication getPasswordAuthentication() {
 		
-		// ³×ÀÌ¹ö³ª Gmail »ç¿ëÀÚ °èÁ¤ ¼³Á¤
-		// GmailÀÇ °æ¿ì @gmail.comÀ» Á¦¿ÜÇÑ ¾ÆÀÌµğ¸¸ ÀÔ·Â
+		// ë„¤ì´ë²„ë‚˜ Gmail ì‚¬ìš©ì ê³„ì • ì„¤ì •
+		// Gmailì˜ ê²½ìš° @gmail.comì„ ì œì™¸í•œ ì•„ì´ë””ë§Œ ì…ë ¥
 		return new PasswordAuthentication(userId, userPw);
 	}
 }

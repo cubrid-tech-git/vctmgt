@@ -61,7 +61,7 @@ public class UserManager {
 	}
 
 	/**
-	 * »ç¿ëÀÚ¸¦ »èÁ¦ÇÏ´Â ¸Ş¼Òµå
+	 * ì‚¬ìš©ìë¥¼ ì‚­ì œí•˜ëŠ” ë©”ì†Œë“œ
 	 * @param UserVo
 	 * @return int
 	 */
@@ -125,8 +125,8 @@ public class UserManager {
 	}
 	
 	/**
-	 * ¸ŞÀÏ ¹ß¼Û½Ã º¸³»´Â »ç¶÷ÀÇ eno¸¦ ÅëÇØ mail Á¤º¸µéÀ» Á¶È¸ÇÔ
-	 * ºñ¹Ğ¹øÈ£, ¹Ş´Â»ç¶÷, cc Á¤º¸
+	 * ë©”ì¼ ë°œì†¡ì‹œ ë³´ë‚´ëŠ” ì‚¬ëŒì˜ enoë¥¼ í†µí•´ mail ì •ë³´ë“¤ì„ ì¡°íšŒí•¨
+	 * ë¹„ë°€ë²ˆí˜¸, ë°›ëŠ”ì‚¬ëŒ, cc ì •ë³´
 	 * @param int
 	 * @return MailVo
 	 */
@@ -139,7 +139,7 @@ public class UserManager {
 	}
 	
 	/**
-	 * ´ëÃ¼ÈŞ°¡ µî·Ï ½ÂÀÎ½Ã ÇÊ¿äÇÑ Á¤º¸µéÀ» rvct_confirm Å×ÀÌºí¿¡¼­ Á¶È¸ÇÏ´Â ¸Ş¼Òµå
+	 * ëŒ€ì²´íœ´ê°€ ë“±ë¡ ìŠ¹ì¸ì‹œ í•„ìš”í•œ ì •ë³´ë“¤ì„ rvct_confirm í…Œì´ë¸”ì—ì„œ ì¡°íšŒí•˜ëŠ” ë©”ì†Œë“œ
 	 * @param int
 	 * @return RVConfirmVo
 	 */
@@ -152,7 +152,7 @@ public class UserManager {
 	}
 	
 	/**
-	 * ÈŞ°¡ ½ÂÀÎ ¹× ¹Ì½ÂÀÎ½Ã vct_confirm Å×ÀÌºí¿¡¼­ Á¶È¸ÇÏ´Â ¸Ş¼Òµå
+	 * íœ´ê°€ ìŠ¹ì¸ ë° ë¯¸ìŠ¹ì¸ì‹œ vct_confirm í…Œì´ë¸”ì—ì„œ ì¡°íšŒí•˜ëŠ” ë©”ì†Œë“œ
 	 * @param int
 	 * @return VConfirmVo
 	 */
@@ -165,7 +165,7 @@ public class UserManager {
 	}
 	
 	/**
-	 * emailÀÇ ºñ¹Ğ¹øÈ£¸¦ º¯°æÇÏ´Â ¸Ş¼Òµå
+	 * emailì˜ ë¹„ë°€ë²ˆí˜¸ë¥¼ ë³€ê²½í•˜ëŠ” ë©”ì†Œë“œ
 	 * @param UserVo
 	 * @return int
 	 */
@@ -178,7 +178,7 @@ public class UserManager {
 	}
 	
 	/**
-	 * °ü¸®ÀÚ°¡ »ç¿ëÀÚ Á¤º¸ ¼öÁ¤½Ã UPDATE ¼öÇàÇÏ´Â ¸Ş¼Òµå
+	 * ê´€ë¦¬ìê°€ ì‚¬ìš©ì ì •ë³´ ìˆ˜ì •ì‹œ UPDATE ìˆ˜í–‰í•˜ëŠ” ë©”ì†Œë“œ
 	 * @param UserVo
 	 * @return int
 	 */
@@ -191,7 +191,7 @@ public class UserManager {
 	}
 	
 	/**
-	 * °ü¸®ÀÚ°¡ adminÀÇ ±ÇÇÑÀ» º¯°æÇÒ ¶§ »ç¿ëÇÏ´Â ¸Ş¼Òµå
+	 * ê´€ë¦¬ìê°€ adminì˜ ê¶Œí•œì„ ë³€ê²½í•  ë•Œ ì‚¬ìš©í•˜ëŠ” ë©”ì†Œë“œ
 	 * @param UserVo
 	 * @return int
 	 */

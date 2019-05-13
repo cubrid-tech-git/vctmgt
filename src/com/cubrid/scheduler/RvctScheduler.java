@@ -10,7 +10,7 @@ import com.cubrid.vo.UserVo;
 import com.cubrid.vo.VConfirmVo;
 import com.cubrid.vo.VctVo;
 /**
- * ¤¾¤¾¤¾¤¾ µğ¹ö±ë ÇÊ¼ö ¤¾¤¾¤¾¤¾
+ * ã…ã…ã…ã… ë””ë²„ê¹… í•„ìˆ˜ ã…ã…ã…ã…
  * @author Hun
  *
  */
@@ -24,15 +24,15 @@ public class RvctScheduler {
 		String secondEndDate = startDate.substring(0, 8) + "10";
 //		System.out.println(startDate + "\t" + endDate);
 //		System.out.println(startDate.substring(0, 8));
-		// rvct ºĞ±âº°·Î ÃÊ±âÈ­ÇÏ´Â°Å Ãß°¡
+		// rvct ë¶„ê¸°ë³„ë¡œ ì´ˆê¸°í™”í•˜ëŠ”ê±° ì¶”ê°€
 		
-		// 1. schedulingRvct1 ÁØºñ
-		// 1-1. eno ÁË´Ù »Ì¾Æ¿À±â
+		// 1. schedulingRvct1 ì¤€ë¹„
+		// 1-1. eno ì£„ë‹¤ ë½‘ì•„ì˜¤ê¸°
 		List<UserVo> userList = userDao.selectAllEno();
 		for(UserVo vo : userList) {
 			System.out.println("eno : " + vo.getEno());
 			
-			// Àü ºĞ±â ³²Àº ´ëÃ¼ÈŞ°¡ÀÏ ¼Ò¼öÁ¡ ÀÚ¸® °¡Á®¿À±â (¼Ò¼öÁ¡ ÀÚ¸®´Â ´ÙÀ½ ºĞ±â·Î ÀÌ¿ù)
+			// ì „ ë¶„ê¸° ë‚¨ì€ ëŒ€ì²´íœ´ê°€ì¼ ì†Œìˆ˜ì  ìë¦¬ ê°€ì ¸ì˜¤ê¸° (ì†Œìˆ˜ì  ìë¦¬ëŠ” ë‹¤ìŒ ë¶„ê¸°ë¡œ ì´ì›”)
 			VctVo vctVo = new VctVo();
 			vctVo.setEno(vo.getEno());
 			vctVo.setRegdate(CurrentTime.makeStartQuater());
@@ -42,7 +42,7 @@ public class RvctScheduler {
 			rvconfirmVo.setWork_date(startDate);
 			rvconfirmVo.setWork_end_date(endDate);
 			
-			// vct Å×ÀÌºí¿¡ »õ·Î¿î ºĞ±âÀÇ ´ëÃ¼ÈŞ°¡ Á¤º¸ ÀÔ·Â
+			// vct í…Œì´ë¸”ì— ìƒˆë¡œìš´ ë¶„ê¸°ì˜ ëŒ€ì²´íœ´ê°€ ì •ë³´ ì…ë ¥
 			int count = vctDao.schedulingRvct1(rvconfirmVo);
 			
 			if(count != 1) {

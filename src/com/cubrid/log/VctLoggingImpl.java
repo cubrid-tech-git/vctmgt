@@ -20,18 +20,18 @@ public class VctLoggingImpl implements VctLogging {
 		logVo.setType(logType);
 		String startType = null;
 		String endType = null;
-		if(vo.getStart_type().toLowerCase().equals("ni")) startType = "½É¾ß";
-		else if(vo.getStart_type().toLowerCase().equals("va")) startType = "ÈŞÀÏ/±ä±Ş";
-		else if(vo.getStart_type().toLowerCase().equals("ev")) startType = "ÆòÀÏ±ä±Ş";
-		else startType = "´ëÃ¼";
-		if(vo.getEnd_type().toLowerCase().equals("ni")) endType = "½É¾ß";
-		else if(vo.getEnd_type().toLowerCase().equals("va")) endType = "ÈŞÀÏ/±ä±Ş";
-		else if(vo.getEnd_type().toLowerCase().equals("ev")) endType = "ÆòÀÏ±ä±Ş";
-		else endType = "´ëÃ¼";
-		logVo.setContent("´ëÃ¼ÈŞ°¡ µî·Ï ½ÅÃ»<br>½ÅÃ»ÀÚ : " + logVo.getEname() + "&nbsp;&nbsp;"
-				+ "»çÀÌÆ® : " + vo.getSite() + "&nbsp;&nbsp;" + "Æ®·¡Å· : " + "<a href='http://www.cubrid.com:8888/browse/" + vo.getPkey() + "'>" + vo.getPkey() + "</a>"
-				+ "Áö¿ø ±â°£ : " + vo.getWork_date() + "(" + startType + ") ~ " + vo.getWork_end_date() + "(" + endType + ")<br>"
-						+ "³»¿ë : " + vo.getReason());
+		if(vo.getStart_type().toLowerCase().equals("ni")) startType = "ì‹¬ì•¼";
+		else if(vo.getStart_type().toLowerCase().equals("va")) startType = "íœ´ì¼/ê¸´ê¸‰";
+		else if(vo.getStart_type().toLowerCase().equals("ev")) startType = "í‰ì¼ê¸´ê¸‰";
+		else startType = "ëŒ€ì²´";
+		if(vo.getEnd_type().toLowerCase().equals("ni")) endType = "ì‹¬ì•¼";
+		else if(vo.getEnd_type().toLowerCase().equals("va")) endType = "íœ´ì¼/ê¸´ê¸‰";
+		else if(vo.getEnd_type().toLowerCase().equals("ev")) endType = "í‰ì¼ê¸´ê¸‰";
+		else endType = "ëŒ€ì²´";
+		logVo.setContent("ëŒ€ì²´íœ´ê°€ ë“±ë¡ ì‹ ì²­<br>ì‹ ì²­ì : " + logVo.getEname() + "&nbsp;&nbsp;"
+				+ "ì‚¬ì´íŠ¸ : " + vo.getSite() + "&nbsp;&nbsp;" + "íŠ¸ë˜í‚¹ : " + "<a href='http://www.cubrid.com:8888/browse/" + vo.getPkey() + "'>" + vo.getPkey() + "</a>"
+				+ "ì§€ì› ê¸°ê°„ : " + vo.getWork_date() + "(" + startType + ") ~ " + vo.getWork_end_date() + "(" + endType + ")<br>"
+						+ "ë‚´ìš© : " + vo.getReason());
 		
 		LogManager.insertLog(logVo);
 	}
@@ -45,16 +45,16 @@ public class VctLoggingImpl implements VctLogging {
 		logVo.setType(logType);
 		String startType = null;
 		String endType = null;
-		if(vo.getStart_type().toLowerCase().equals("ni")) startType = "½É¾ß";
-		else if(vo.getStart_type().toLowerCase().equals("va")) startType = "ÈŞÀÏ";
-		else startType = "´ëÃ¼";
-		if(vo.getEnd_type().toLowerCase().equals("ni")) endType = "½É¾ß";
-		else if(vo.getEnd_type().toLowerCase().equals("va")) endType = "ÈŞÀÏ";
-		else endType = "´ëÃ¼";
-		logVo.setContent("´ëÃ¼ÈŞ°¡ µî·Ï ¼öÁ¤<br>½ÅÃ»ÀÚ : " + logVo.getEname() + "&nbsp;&nbsp;"
-				+ "»çÀÌÆ® : " + vo.getSite() + "&nbsp;&nbsp;" + "Æ®·¡Å· : " + "<a href='http://www.cubrid.com:8888/browse/" + vo.getPkey() + "'>" + vo.getPkey() + "</a>"
-				+ "Áö¿ø ±â°£ : " + vo.getWork_date() + "(" + startType + ") ~ " + vo.getWork_end_date() + "(" + endType + ")<br>"
-						+ "³»¿ë : " + vo.getReason());
+		if(vo.getStart_type().toLowerCase().equals("ni")) startType = "ì‹¬ì•¼";
+		else if(vo.getStart_type().toLowerCase().equals("va")) startType = "íœ´ì¼";
+		else startType = "ëŒ€ì²´";
+		if(vo.getEnd_type().toLowerCase().equals("ni")) endType = "ì‹¬ì•¼";
+		else if(vo.getEnd_type().toLowerCase().equals("va")) endType = "íœ´ì¼";
+		else endType = "ëŒ€ì²´";
+		logVo.setContent("ëŒ€ì²´íœ´ê°€ ë“±ë¡ ìˆ˜ì •<br>ì‹ ì²­ì : " + logVo.getEname() + "&nbsp;&nbsp;"
+				+ "ì‚¬ì´íŠ¸ : " + vo.getSite() + "&nbsp;&nbsp;" + "íŠ¸ë˜í‚¹ : " + "<a href='http://www.cubrid.com:8888/browse/" + vo.getPkey() + "'>" + vo.getPkey() + "</a>"
+				+ "ì§€ì› ê¸°ê°„ : " + vo.getWork_date() + "(" + startType + ") ~ " + vo.getWork_end_date() + "(" + endType + ")<br>"
+						+ "ë‚´ìš© : " + vo.getReason());
 		
 		LogManager.insertLog(logVo);
 	}
@@ -67,8 +67,8 @@ public class VctLoggingImpl implements VctLogging {
 		logVo.setEno(vo.getEno());
 		logVo.setEname(vo.getEname());
 		logVo.setType(logType);
-		logVo.setContent("´ëÃ¼ÈŞ°¡ ½ÂÀÎ<br>½ÅÃ»ÀÚ : " + logVo.getEname() + "(" + logVo.getEno() + ")&nbsp;&nbsp;»çÀÌÆ®¸í : "
-				+ vo.getSite() + "(<a href='http://www.cubrid.com:8888/browse/" + vo.getPkey() + "'>" + vo.getPkey() + "</a>&nbsp;&nbsp´ëÃ¼ÈŞ°¡ ¹ß»ı ½Ã°£ : " + vo.getWork_time() + "H");
+		logVo.setContent("ëŒ€ì²´íœ´ê°€ ìŠ¹ì¸<br>ì‹ ì²­ì : " + logVo.getEname() + "(" + logVo.getEno() + ")&nbsp;&nbsp;ì‚¬ì´íŠ¸ëª… : "
+				+ vo.getSite() + "(<a href='http://www.cubrid.com:8888/browse/" + vo.getPkey() + "'>" + vo.getPkey() + "</a>&nbsp;&nbspëŒ€ì²´íœ´ê°€ ë°œìƒ ì‹œê°„ : " + vo.getWork_time() + "H");
 		
 		LogManager.insertLog(logVo);
 	}
@@ -116,7 +116,7 @@ public class VctLoggingImpl implements VctLogging {
 		logVo.setEno(vo.getEno());
 		logVo.setEname(vo.getEname());
 		logVo.setType(logType);
-		logVo.setContent(vo.getEname() + "(" + vo.getEno() + ") ½Å±Ô µî·Ï");
+		logVo.setContent(vo.getEname() + "(" + vo.getEno() + ") ì‹ ê·œ ë“±ë¡");
 		
 		LogManager.insertLog(logVo);
 	}
@@ -128,7 +128,7 @@ public class VctLoggingImpl implements VctLogging {
 		logVo.setEno(vo.getEno());
 		logVo.setEname(vo.getEname());
 		logVo.setType(logType);
-		logVo.setContent(vo.getEname() + "(" + vo.getEno() + ") »èÁ¦"); 
+		logVo.setContent(vo.getEname() + "(" + vo.getEno() + ") ì‚­ì œ"); 
 
 		LogManager.insertLog(logVo);
 	}
@@ -146,7 +146,7 @@ public class VctLoggingImpl implements VctLogging {
 		logVo.setEno(vo.getEno());
 		logVo.setEname(vo.getEname());
 		logVo.setType(logType);
-		logVo.setContent("°ü¸®ÀÚ : " + vo.getEname() + " ´Ô ·Î±×ÀÎ");
+		logVo.setContent("ê´€ë¦¬ì : " + vo.getEname() + " ë‹˜ ë¡œê·¸ì¸");
 		
 		LogManager.insertLog(logVo);
 	}
@@ -158,7 +158,7 @@ public class VctLoggingImpl implements VctLogging {
 		logVo.setEno(vo.getEno());
 		logVo.setEname(vo.getEname());
 		logVo.setType(logType);
-		logVo.setContent("°ü¸®ÀÚ : " + vo.getEname() + " ´Ô ºñ¹Ğ¹øÈ£ º¯°æ");
+		logVo.setContent("ê´€ë¦¬ì : " + vo.getEname() + " ë‹˜ ë¹„ë°€ë²ˆí˜¸ ë³€ê²½");
 		
 		LogManager.insertLog(logVo);
 	}

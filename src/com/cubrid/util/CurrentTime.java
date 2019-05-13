@@ -35,7 +35,7 @@ public class CurrentTime {
 	/**
 	 * 
 	 * @return String
-	 * ÇöÀç ´ŞÀ» ¸®ÅÏÇÔ
+	 * í˜„ì¬ ë‹¬ì„ ë¦¬í„´í•¨
 	 */
 	public static String getCurMonth() {
 		Calendar cal = Calendar.getInstance();
@@ -55,7 +55,7 @@ public class CurrentTime {
 	}
 	
 	/**
-	 * ÇØ´ç ³âµµÀÇ ½ÃÀÛ ÀÏÀ» ¹İÈ¯ÇÏ´Â ¸Ş¼Òµå
+	 * í•´ë‹¹ ë…„ë„ì˜ ì‹œì‘ ì¼ì„ ë°˜í™˜í•˜ëŠ” ë©”ì†Œë“œ
 	 * @return YYYY-MM-DD
 	 */
 	public static String startYear() {
@@ -66,7 +66,7 @@ public class CurrentTime {
 	}
 
 	/**
-	 * ´ÙÀ½ÇØ Ã¹¹øÂ° ³¯À» ¹İÈ¯ÇÏ´Â ¸Ş¼Òµå
+	 * ë‹¤ìŒí•´ ì²«ë²ˆì§¸ ë‚ ì„ ë°˜í™˜í•˜ëŠ” ë©”ì†Œë“œ
 	 * @return YYYY-MM-DD
 	 */
 	public static String endYear() {
@@ -77,7 +77,7 @@ public class CurrentTime {
 	}
 	
 	/**
-	 * ÇöÀç ³¯Â¥ ±âÁØÀ¸·Î Áö³­ ºĞ±âÀÇ ½ÃÀÛ ÀÏÀ» ¹İÈ¯ÇÏ´Â ¸Ş¼Òµå
+	 * í˜„ì¬ ë‚ ì§œ ê¸°ì¤€ìœ¼ë¡œ ì§€ë‚œ ë¶„ê¸°ì˜ ì‹œì‘ ì¼ì„ ë°˜í™˜í•˜ëŠ” ë©”ì†Œë“œ
 	 * @return YYYY-MM-DD
 	 */
 	public static String makeStartLastQuater() {
@@ -107,7 +107,7 @@ public class CurrentTime {
 	}
 	
 	/**
-	 * ÇöÀç ³¯Â¥ ±âÁØÀ¸·Î ºĞ±âÀÇ ½ÃÀÛ ÀÏÀ» ¹İÈ¯ÇÏ´Â ¸Ş¼Òµå
+	 * í˜„ì¬ ë‚ ì§œ ê¸°ì¤€ìœ¼ë¡œ ë¶„ê¸°ì˜ ì‹œì‘ ì¼ì„ ë°˜í™˜í•˜ëŠ” ë©”ì†Œë“œ
 	 * @return YYYY-MM-DD
 	 */
 	public static String makeStartQuater() {
@@ -137,7 +137,7 @@ public class CurrentTime {
 	}
 	
 	/**
-	 * ÇöÀç ³¯Â¥ ±âÁØÀ¸·Î Áö³­ ºĞ±âÀÇ ³¡³ª´Â ÀÏÀ» ¹İÈ¯ÇÏ´Â ¸Ş¼Òµå
+	 * í˜„ì¬ ë‚ ì§œ ê¸°ì¤€ìœ¼ë¡œ ì§€ë‚œ ë¶„ê¸°ì˜ ëë‚˜ëŠ” ì¼ì„ ë°˜í™˜í•˜ëŠ” ë©”ì†Œë“œ
 	 * @return YYYY-MM-DD
 	 */
 	public static String makeEndLastQuater() {
@@ -167,7 +167,7 @@ public class CurrentTime {
 	}
 	
 	/**
-	 * ÇöÀç ³¯Â¥ ±âÁØÀ¸·Î ºĞ±âÀÇ ³¡³ª´Â ÀÏÀ» ¹İÈ¯ÇÏ´Â ¸Ş¼Òµå
+	 * í˜„ì¬ ë‚ ì§œ ê¸°ì¤€ìœ¼ë¡œ ë¶„ê¸°ì˜ ëë‚˜ëŠ” ì¼ì„ ë°˜í™˜í•˜ëŠ” ë©”ì†Œë“œ
 	 * @return YYYY-MM-DD
 	 */
 	public static String makeEndQuater() {
@@ -237,13 +237,13 @@ public class CurrentTime {
 		
 		if(startYear == paramYear) {
 			for(int i = 1; i <= 4; i++) {
-				String tmp = startYear + "-" + i + "ºĞ±â";
+				String tmp = startYear + "-" + i + "ë¶„ê¸°";
 				list.add(tmp);
 			}
 		} else if(startYear < paramYear) {
 			for(int i = startYear; i <= paramYear; i++) {
 				for(int j = 1; j <= 4; j++) {
-					String tmp = i + "-" + j + "ºĞ±â";
+					String tmp = i + "-" + j + "ë¶„ê¸°";
 					list.add(tmp);
 				}
 			}
@@ -258,7 +258,7 @@ public class CurrentTime {
 		int month = cal.get(Calendar.MONTH) + 1;
 		
 		int quater = (int)Math.ceil(month / 3.0);
-		String result = year + "-" + quater + "ºĞ±â";
+		String result = year + "-" + quater + "ë¶„ê¸°";
 		
 		return result;
 	}
