@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -227,6 +228,8 @@ public class CurrentTime {
 			}
 		}
 		
+		list.sort(Comparator.reverseOrder());
+		
 		return list;
 	}
 	
@@ -248,6 +251,8 @@ public class CurrentTime {
 				}
 			}
 		}
+		
+		list.sort(Comparator.reverseOrder());
 		
 		return list;
 	}
