@@ -15,10 +15,10 @@
 	String dnoName = null;
 	switch(userVo.getDno()) {
 	case 401:
-		dnoName = "개발 1팀";
+		dnoName = "기술지원 1팀";
 		break;
 	case 402:
-		dnoName = "개발 2팀";
+		dnoName = "기술지원 2팀";
 		break;
 	case 411:
 		dnoName = "대전사무소";
@@ -28,6 +28,9 @@
 		break;
 	case 302:
 		dnoName = "개발 2팀";
+		break;
+	case 303:
+		dnoName = "개발 3팀";
 		break;
 	case 311:
 		dnoName = "QA팀";

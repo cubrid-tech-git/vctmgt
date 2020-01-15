@@ -130,19 +130,23 @@
 	case 302:
 		dnoName = "개발 2팀";
 		break;
+	case 303:
+		dnoName = "개발 3팀";
+		break;
 	case 311:
 		dnoName = "QA팀";
 		break;
-        case 100:
-                switch(eno) {
-                case 6: dnoName = "기술지원 1팀장"; break;
-                case 7: dnoName = "기술지원 2팀장"; break;
-                case 3: dnoName = "대전사무소장"; break;
-                case 27: dnoName = "개발 1팀장"; break;
-                case 29: dnoName = "개발 2팀장"; break;
-                case 5: dnoName = "QA팀장"; break;
-                case 20: dnoName = "전체관리자"; break;
-                }
+    case 100:
+        switch(eno) {
+        case 6: dnoName = "기술지원 1팀장"; break;
+        case 7: dnoName = "기술지원 2팀장"; break;
+        case 3: dnoName = "대전사무소장"; break;
+        case 27: dnoName = "개발 1팀장"; break;
+        case 29: dnoName = "개발 2팀장"; break;
+        case 28: dnoName = "개발 3팀장"; break;
+        case 5: dnoName = "QA팀장"; break;
+        case 20: dnoName = "전체관리자"; break;
+        }
 		break;
 	}
 	request.setAttribute("dnoName", dnoName);

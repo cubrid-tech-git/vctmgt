@@ -136,6 +136,9 @@
 						<c:when test="${costTblList.dno == 302}">
 							개발 2팀
 						</c:when>
+						<c:when test="${costTblList.dno == 303}">
+							개발 3팀
+						</c:when>
 						<c:when test="${costTblList.dno == 311}">
 							QA팀
 						</c:when>
@@ -155,6 +158,9 @@
 								</c:when>
 								<c:when test="${costTblList.ename == '조성룡'}">
 									개발 2팀장
+								</c:when>
+								<c:when test="${costTblList.ename == '김병욱'}">
+									개발 3팀장
 								</c:when>
 								<c:when test="${costTblList.ename == '손승일'}">
 									QA팀장

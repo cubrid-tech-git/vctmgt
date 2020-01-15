@@ -31,6 +31,9 @@
 	case 302 :
 		userVo.setDname("개발 2팀");
 		break;
+	case 303 :
+		userVo.setDname("개발 3팀");
+		break;
 	case 311 :
 		userVo.setDname("QA팀");
 		break;
@@ -69,6 +72,7 @@
 						<option value="411">대전사무소</option>
 						<option value="301">개발 1팀</option>
 						<option value="302">개발 2팀</option>
+						<option value="303">개발 3팀</option>
 						<option value="311">QA팀</option>
 						<option value="100">팀장</option>
 					</select>

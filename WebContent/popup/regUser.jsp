@@ -36,6 +36,7 @@
 					<option value="411">대전사무소</option>
 					<option value="301">개발 1팀</option>
 					<option value="302">개발 2팀</option>
+					<option value="303">개발 3팀</option>
 					<option value="311">QA팀</option>
 					<option value="100">팀장</option>
 				</select>
@@ -76,6 +77,9 @@
 						<c:when test="${user.dno == 302}">
 							개발 2팀
 						</c:when>
+						<c:when test="${user.dno == 303}">
+							개발 3팀
+						</c:when>
 						<c:when test="${user.dno == 311}">
 							QA팀
 						</c:when>
@@ -95,6 +99,9 @@
                                                                 </c:when>
                                                                 <c:when test="${user.ename == '조성룡'}">
                                                                         개발 2팀장
+                                                                </c:when>
+                                                                <c:when test="${user.ename == '김병욱'}">
+                                                                        개발 3팀장
                                                                 </c:when>
                                                                 <c:when test="${user.ename == '손승일'}">
                                                                         QA팀장

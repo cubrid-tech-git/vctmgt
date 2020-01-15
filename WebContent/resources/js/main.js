@@ -44,7 +44,7 @@ $(function() {
 		var rvctWorkTime = 0;
 
 		// 대체휴가 시간 계산 (시작 / 끝 비교)
-		// 같은날, 즉 21:00 ~ 24:00 이전 종료
+		// 같은날, 즉 20:00 ~ 24:00 이전 종료
 		if(rvctStartDate == rvctEndDate) {
 			// 평일 심야일 경우
 			
@@ -54,9 +54,9 @@ $(function() {
 			}
 			
 			if(rvctStartType == "ni") {
-				if(afterMidHour > 21) {
-					if(beforeMidHour < 21) {
-						beforeMidHour = 21;
+				if(afterMidHour > 20) {
+					if(beforeMidHour < 20) {
+						beforeMidHour = 20;
 						beforeMidSecond = 0;
 					} 
 					rvctWorkTime = (afterMidHour - beforeMidHour) + ((afterMidSecond - beforeMidSecond) / 60 );
@@ -92,9 +92,9 @@ $(function() {
 				rvctWorkTime = ((afterMidHour - beforeMidHour) + ((afterMidSecond - beforeMidSecond) / 60));
 			// 평일 긴급일 경우
 			} else if(rvctStartType == "ev") {
-				if(afterMidHour > 21) {
-					if(beforeMidHour < 21) {
-						beforeMidHour = 21;
+				if(afterMidHour > 20) {
+					if(beforeMidHour < 20) {
+						beforeMidHour = 20;
 						beforeMidSecond = 0;
 					} 
 					rvctWorkTime = ((afterMidHour - beforeMidHour) + ((afterMidSecond - beforeMidSecond) / 60 )) * 1.3;
@@ -122,16 +122,16 @@ $(function() {
 				}
 			}
 			
-		// 21:00 ~ 익)??:?? 에 끝날 경우
+		// 20:00 ~ 익)??:?? 에 끝날 경우
 		} else {
 			// 평일 심야일 경우
 			if(rvctStartType == "ni") {
-				// 21:00 ~ 24:00 계산
+				// 20:00 ~ 24:00 계산
 				beforeMidHour = 24 - beforeMidHour;
-				if(beforeMidHour > 3) {
-					beforeMidHour = 3;
+				if(beforeMidHour > 4) { // 20시 이전에 야근을 시작한 경우
+					beforeMidHour = 4;
 					beforeMidSecond = 0;
-				} else if(beforeMidHour <= 3) {
+				} else if(beforeMidHour <= 4) { // 20시 이후에 야근을 시작한 경우
 					if(beforeMidSecond != 0) beforeMidHour = beforeMidHour - 1;
 				}
 				if(rvctEndType == "ni") {
@@ -234,12 +234,12 @@ $(function() {
 					rvctWorkTime = rvctWorkTime + ((afterMidHour * 1.5) + (afterMidSecond / 60 * 1.5));
 				}
 			} else if(rvctStartType == "ev") {
-				// 21:00 ~ 24:00 계산
+				// 20:00 ~ 24:00 계산
 				beforeMidHour = 24 - beforeMidHour;
-				if(beforeMidHour > 3) {
-					beforeMidHour = 3;
+				if(beforeMidHour > 4) {
+					beforeMidHour = 4;
 					beforeMidSecond = 0;
-				} else if(beforeMidHour <= 3) {
+				} else if(beforeMidHour <= 4) {
 					if(beforeMidSecond != 0) beforeMidHour = beforeMidHour - 1;
 				}
 				

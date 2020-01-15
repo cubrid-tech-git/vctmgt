@@ -29,6 +29,9 @@
 	case 302:
 		dnoName = "개발 2팀";
 		break;
+	case 303:
+		dnoName = "개발 3팀";
+		break;
 	case 311:
 		dnoName = "QA팀";
 		break;

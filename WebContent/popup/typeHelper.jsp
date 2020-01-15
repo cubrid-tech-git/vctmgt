@@ -19,7 +19,7 @@
 		</tr>
 		<tr>
 			<td class="contentTd">평일-초과</td>
-			<td class="contentTd">21:00 ~ 24:00</td>
+			<td class="contentTd">20:00 ~ 24:00</td>
 			<td class="contentTd">1</td>
 		</tr>
 		<tr>
@@ -29,7 +29,7 @@
 		</tr>
 		<tr>
 			<td class="contentTd">평일긴급-초과</td>
-			<td class="contentTd">21:00 ~ 24:00</td>
+			<td class="contentTd">20:00 ~ 24:00</td>
 			<td class="contentTd">1.3</td>
 		</tr>
 		<tr>
