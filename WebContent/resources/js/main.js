@@ -275,10 +275,10 @@ $(function() {
 		if(check) {
 			var url = "";
 			if(rvctHiddenType == "I") {
-				url = "../controller/regRvctConfirm.jsp?rvctSiteName=" + rvctSiteName +"&rvctJiraName=" + rvctJiraName + "&rvctStartDate=" + rvctStartDate + "&rvctEndDate=" + rvctEndDate + "&rvctStartTime=" + rvctStartTime + "&rvctEndTime=" + rvctEndTime + "&rvctStartType=" + rvctStartType + "&rvctEndType=" + rvctEndType + "&rvctReason=" + rvctReason + "&rvctWorkTime=" + rvctWorkTime.toFixed(1) + "&rvctEno=" + rvctEno + "&rvctEname=" + rvctEname;
+				url = "../controller/regRvctConfirm.jsp?rvctSiteName=" + encodeURIComponent(rvctSiteName) +"&rvctJiraName=" + encodeURIComponent(rvctJiraName) + "&rvctStartDate=" + rvctStartDate + "&rvctEndDate=" + rvctEndDate + "&rvctStartTime=" + rvctStartTime + "&rvctEndTime=" + rvctEndTime + "&rvctStartType=" + rvctStartType + "&rvctEndType=" + rvctEndType + "&rvctReason=" + encodeURIComponent(rvctReason) + "&rvctWorkTime=" + rvctWorkTime.toFixed(1) + "&rvctEno=" + rvctEno + "&rvctEname=" + rvctEname;
 			} else if(rvctHiddenType == "U") {
 				var rvctId = $("#rvctId").val();
-				url = "../controller/updateRvctController.jsp?rvctSiteName=" + rvctSiteName +"&rvctJiraName=" + rvctJiraName + "&rvctStartDate=" + rvctStartDate + "&rvctEndDate=" + rvctEndDate + "&rvctStartTime=" + rvctStartTime + "&rvctEndTime=" + rvctEndTime + "&rvctStartType=" + rvctStartType + "&rvctEndType=" + rvctEndType + "&rvctReason=" + rvctReason + "&rvctWorkTime=" + rvctWorkTime.toFixed(1) + "&rvctEno=" + rvctEno + "&rvctEname=" + rvctEname + "&rvctId=" + rvctId;
+				url = "../controller/updateRvctController.jsp?rvctSiteName=" + encodeURIComponent(rvctSiteName) +"&rvctJiraName=" + encodeURIComponent(rvctJiraName) + "&rvctStartDate=" + rvctStartDate + "&rvctEndDate=" + rvctEndDate + "&rvctStartTime=" + rvctStartTime + "&rvctEndTime=" + rvctEndTime + "&rvctStartType=" + rvctStartType + "&rvctEndType=" + rvctEndType + "&rvctReason=" + encodeURIComponent(rvctReason) + "&rvctWorkTime=" + rvctWorkTime.toFixed(1) + "&rvctEno=" + rvctEno + "&rvctEname=" + rvctEname + "&rvctId=" + rvctId;
 			}
 			//window.open(url, "", "width=0, height=0");
 			location.href = encodeURI(url);
@@ -352,7 +352,7 @@ $(function() {
 		// location.href="../controller/regVctConfirm.jsp?eno=" + encodeURI(eno) + "&avctId=" + encodeURI(avctId) + "&rvctId=" + encodeURI(rvctId) + "&avctCount=" + encodeURI(avctCount) + "&rvctCount=" + encodeURI(rvctCount) + "&fromDate=" + encodeURI(fromDate) + "&toDate=" + encodeURI(toDate) + "&avctTime=" + encodeURI(avctTime) + "&rvctTime=" + encodeURI(rvctTime) + "&vctReason=" + encodeURI(vctReason) /*+ "&svctTime=" + svctTime*/ + "&trackingPkey=" + encodeURI(trackingPkey) + "&trackingSite=" + encodeURI(trackingSite) + "&trackingReason=" + encodeURI(trackingReason);
 		
 		var url = "";
-		url = "../controller/regVctConfirm.jsp?eno=" + eno + "&avctId=" + avctId + "&rvctId=" + rvctId + "&avctCount=" + avctCount + "&rvctCount=" + rvctCount + "&fromDate=" + fromDate + "&toDate=" + toDate + "&avctTime=" + avctTime + "&rvctTime=" + rvctTime + "&vctReason=" + vctReason /*+ "&svctTime=" + svctTime*/ + "&trackingPkey=" + trackingPkey + "&trackingSite=" + trackingSite + "&trackingReason=" + trackingReason;
+		url = "../controller/regVctConfirm.jsp?eno=" + eno + "&avctId=" + avctId + "&rvctId=" + rvctId + "&avctCount=" + avctCount + "&rvctCount=" + rvctCount + "&fromDate=" + fromDate + "&toDate=" + toDate + "&avctTime=" + avctTime + "&rvctTime=" + rvctTime + "&vctReason=" + encodeURIComponent(vctReason) /*+ "&svctTime=" + svctTime*/ + "&trackingPkey=" + trackingPkey + "&trackingSite=" + trackingSite + "&trackingReason=" + trackingReason;
 		location.href = encodeURI(url);
 	});
 });

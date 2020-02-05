@@ -5,6 +5,8 @@
 <%@page import="com.cubrid.vo.MailVo"%>
 <%@page import="com.cubrid.vo.VConfirmVo"%>
 <%@page import="com.cubrid.dao.VctDaoImpl"%>
+<%@page import="java.net.URLDecoder"%>
+<%@page import="java.nio.charset.StandardCharsets"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
@@ -22,7 +24,7 @@
 	float rvctTime = 0;	// 대체휴가 휴가 시간 변수
 	if(request.getParameter("rvctTime") != null && !request.getParameter("rvctTime").equals("")) rvctTime = Float.parseFloat(request.getParameter("rvctTime"));
 	float cvctTime = 0;	// 연차 + 대체휴가일 경우 사용할 휴가 시간 계산 변수 (날짜 기준 소수점 처리)
-	String vctReason = request.getParameter("vctReason");
+	String vctReason = URLDecoder.decode(request.getParameter("vctReason"), StandardCharsets.UTF_8.toString());
 	String trackingPkey = request.getParameter("trackingPkey");
 	String trackingSite = request.getParameter("trackingSite");
 	String trackingReason = request.getParameter("trackingReason");

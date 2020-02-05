@@ -6,6 +6,8 @@
 <%@page import="com.cubrid.util.ReplaceData"%>
 <%@page import="com.cubrid.vo.RVConfirmVo"%>
 <%@page import="com.cubrid.dao.VctDaoImpl"%>
+<%@page import="java.net.URLDecoder"%>
+<%@page import="java.nio.charset.StandardCharsets"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -18,15 +20,15 @@
 <%
 	int id = Integer.parseInt(request.getParameter("rvctId"));
 	int eno = Integer.parseInt(request.getParameter("rvctEno"));
-	String site = request.getParameter("rvctSiteName");
-	String jira = request.getParameter("rvctJiraName");
+	String site = URLDecoder.decode(request.getParameter("rvctSiteName"), StandardCharsets.UTF_8.toString());
+	String jira = URLDecoder.decode(request.getParameter("rvctJiraName"), StandardCharsets.UTF_8.toString());
 	String startDate = request.getParameter("rvctStartDate");
 	String endDate = request.getParameter("rvctEndDate");
 	String startTime = request.getParameter("rvctStartTime");
 	String endTime = request.getParameter("rvctEndTime");
 	String startType = request.getParameter("rvctStartType");
 	String endType = request.getParameter("rvctEndType");
-	String reason = request.getParameter("rvctReason");
+	String reason = URLDecoder.decode(request.getParameter("rvctReason"), StandardCharsets.UTF_8.toString());
 	float rvctWorkTime = Float.parseFloat(request.getParameter("rvctWorkTime"));
 	String rvctEname = request.getParameter("rvctEname");
 	String rvctEmail = request.getParameter("rvctEmail");

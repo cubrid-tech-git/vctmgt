@@ -193,7 +193,7 @@
 			// location.href="../controller/regVctUpdate.jsp?eno=" + eno + "&avctId=" + avctId + "&rvctId=" + rvctId + "&avctCount=" + avctCount + "&rvctCount=" + rvctCount + "&fromDate=" + fromDate + "&toDate=" + toDate + "&avctTime=" + avctTime + "&rvctTime=" + rvctTime + "&vctReason=" + vctReason + "&svctTime=" + svctTime + "&id=" + id + "&trackingPkey=" + trackingPkey + "&trackingSite=" + trackingSite + "&trackingReason=" + trackingReason;
 			
 			var url = "";
-			url = "../controller/regVctUpdate.jsp?eno=" + eno + "&avctId=" + avctId + "&rvctId=" + rvctId + "&avctCount=" + avctCount + "&rvctCount=" + rvctCount + "&fromDate=" + fromDate + "&toDate=" + toDate + "&avctTime=" + avctTime + "&rvctTime=" + rvctTime + "&vctReason=" + vctReason + "&svctTime=" + svctTime + "&id=" + id + "&trackingPkey=" + trackingPkey + "&trackingSite=" + trackingSite + "&trackingReason=" + trackingReason;
+			url = "../controller/regVctUpdate.jsp?eno=" + eno + "&avctId=" + avctId + "&rvctId=" + rvctId + "&avctCount=" + avctCount + "&rvctCount=" + rvctCount + "&fromDate=" + fromDate + "&toDate=" + toDate + "&avctTime=" + avctTime + "&rvctTime=" + rvctTime + "&vctReason=" + encodeURIComponent(vctReason) + "&svctTime=" + svctTime + "&id=" + id + "&trackingPkey=" + trackingPkey + "&trackingSite=" + trackingSite + "&trackingReason=" + trackingReason;
 			location.href = encodeURI(url);
 		});
 	});
