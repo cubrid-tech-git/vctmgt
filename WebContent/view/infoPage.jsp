@@ -156,7 +156,7 @@
 								<c:when test="${costTblList.ename == '한기수'}">
 									개발 1팀장
 								</c:when>
-								<c:when test="${costTblList.ename == '조성룡'}">
+								<c:when test="${costTblList.ename == '민준'}">
 									개발 2팀장
 								</c:when>
 								<c:when test="${costTblList.ename == '김병욱'}">

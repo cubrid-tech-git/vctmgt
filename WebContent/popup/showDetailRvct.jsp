@@ -27,7 +27,7 @@
 	if(staticsVo != null) {
 		float totalTime = staticsVo.getRemain_time() + staticsVo.getUsed_time();
 		request.setAttribute("totalTime", totalTime);
-		String cost = (int)Math.floor(staticsVo.getRemain_time()) * 10000 + "원";
+		String cost = (int)Math.floor(staticsVo.getRemain_time()) * 11000 + "원";
 		request.setAttribute("cost", cost);
 	}
 	

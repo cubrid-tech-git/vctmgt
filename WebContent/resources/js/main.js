@@ -179,7 +179,7 @@ $(function() {
 						rvctWorkTime = ((beforeMidHour + (beforeMidSecond / 60)) * 1.5) + (7 * 1.3);
 						rvctWorkTime += ((afterMidHour - 7) + (afterMidSecond / 60));
 					} else {
-						rvctWorkTime = ((beforeMidHour + (beforeMidSecond / 60)) * 1.5) + ((afterMidHour + (afterMidSecond / 60)) * 1.3);
+						rvctWorkTime = ((beforeMidHour + (beforeMidSecond / 60)) * 1.5) + ((parseInt(afterMidHour) + (afterMidSecond / 60)) * 1.3);
 					}
 				} else if(rvctEndType == "ev") {
 					// // 00:00 ~ 07:00 계산
@@ -256,7 +256,7 @@ $(function() {
 						afterMidHour = 7;
 						afterMidSecond = 0;
 					}
-					rvctWorkTime = (((beforeMidHour) + (beforeMidSecond / 60)) * 1.3) + (((afterMidHour) + (afterMidSecond / 60)) * 1.5);
+					rvctWorkTime = (((beforeMidHour) + (beforeMidSecond / 60)) * 1.3) + (((parseInt(afterMidHour)) + (afterMidSecond / 60)) * 1.5);
 				}
 			}
 		}

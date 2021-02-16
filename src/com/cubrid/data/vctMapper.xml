@@ -201,7 +201,7 @@ WHERE (V.regdate = #{aRegdate} AND V.vct_type='A')
 	
 	<!-- 대체휴가 수당 가져오는 SQL -->
 	<select id="selectRvctCostInfo" parameterType="String" resultType="vctVo">
-		SELECT u.eno, u.dno, u.ename, v.vctcount, TO_CHAR(FLOOR(v.vctcount) * 10000) || '원' as [cost]
+		SELECT u.eno, u.dno, u.ename, v.vctcount, TO_CHAR(FLOOR(v.vctcount) * 11000) || '원' as [cost]
 		FROM vct v JOIN [user] u ON v.eno = u.eno 
 		WHERE v.vct_type = 'R' AND v.enddate = #{date}
 		ORDER BY u.ename;

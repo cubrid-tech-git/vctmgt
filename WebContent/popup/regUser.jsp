@@ -97,14 +97,14 @@
                                                                 <c:when test="${user.ename == '한기수'}">
                                                                         개발 1팀장
                                                                 </c:when>
-                                                                <c:when test="${user.ename == '조성룡'}">
+                                                                <c:when test="${user.ename == '민준'}">
                                                                         개발 2팀장
                                                                 </c:when>
                                                                 <c:when test="${user.ename == '김병욱'}">
                                                                         개발 3팀장
                                                                 </c:when>
                                                                 <c:when test="${user.ename == '손승일'}">
-                                                                        QA팀장
+                                QA팀장
                                                                 </c:when>
                                                                 <c:when test="${user.ename == '오명환'}">
                                                                         전체관리자
