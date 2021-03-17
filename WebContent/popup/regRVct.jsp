@@ -45,7 +45,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>대체휴가 등록 신청 - 여기 수정해야함</title>
+<title>대체휴가 등록 신청</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/common.css">
 <script charset="UTF-8" src="<%=request.getContextPath()%>/resources/js/jquery-1.10.2.js"></script>
 <script charset="UTF-8" src="<%=request.getContextPath()%>/resources/js/main.js"></script>

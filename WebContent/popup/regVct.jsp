@@ -176,6 +176,16 @@
 		});
 	});
 </script>
+<script type="text/javascript">
+/**
+ * 휴가 신청 시 중복 클릭 방지
+ **/
+	$(document).ready(function() {
+		$("#regVctConfirmBtn").click(function() {
+			this.setAttribute("disabled", "disabled");
+		});
+	});
+</script>
 </head>
 <body>
 	<div id="regVctContent" style="text-align: center">
