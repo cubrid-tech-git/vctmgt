@@ -182,7 +182,15 @@
  **/
 	$(document).ready(function() {
 		$("#regVctConfirmBtn").click(function() {
-			this.setAttribute("disabled", "disabled");
+			if($("#fromDate").val() != ""){
+				if($("#toDate").val() != ""){
+					if($("#avctTime").val() > 0 || ($("#trackingId").val() !== "" && $("#rvctTime").val() > 0)){
+						if($("#vctReason").val() != ""){
+							this.setAttribute("disabled", "disabled");
+						}
+					}
+				}
+			}
 		});
 	});
 </script>
