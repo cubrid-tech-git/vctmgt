@@ -30,7 +30,7 @@
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
-			<version>3.4.5</version>
+			<version>3.5.6</version>
 			<!-- Mybatis 3.4.6버전 이상(Spring Boot 최신버전)에서 cubrid.jdbc.driver.CUBRIDResultSet.isClosed 
 				관련 에러 발생 -->
 		</dependency>
