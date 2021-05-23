@@ -31,7 +31,7 @@
 	float rvctWorkTime = Float.parseFloat(request.getParameter("rvctWorkTime"));
 	String rvctEname = request.getParameter("rvctEname");
 	String rvctEmail = request.getParameter("rvctEmail");
-//	System.out.println(eno + "\n" + rvctEname + "\n" + rvctEmail+ "\n" + site + "\n" + jira + "\n" + startDate + "\n" + endDate + "\n" + startTime + "\n" + endTime + "\n" + startType + "\n" + endType + "\n" + reason + "\n" + rvctWorkTime);
+	//System.out.println(eno + "\n" + rvctEname + "\n" + rvctEmail+ "\n" + site + "\n" + jira + "\n" + startDate + "\n" + endDate + "\n" + startTime + "\n" + endTime + "\n" + startType + "\n" + endType + "\n" + reason + "\n" + rvctWorkTime);
 	
 	RVConfirmVo vo = new RVConfirmVo();
 	vo.setEno(eno);
@@ -46,6 +46,7 @@
 	vo.setWork_time(rvctWorkTime);
 	vo.setReason(reason);
 	
+	
 	// DB에 대체휴가 신청 넣고
 	VctDaoImpl dao = new VctDaoImpl();
 	int result = dao.insertRvctConfirm(vo);
@@ -57,9 +58,14 @@
 		MailVo mailVo = new UserDaoImpl().selectMailInfo(eno);
 		mailVo.setVo(vo);
 		mailVo.setCc(null);
+		//@@@@@@@@@@이메일 테스트@@@@@@@@@@
+		//mailVo.setManager_ename("원종민");
+		//mailVo.setReceiver("jmwon@cubrid.com");
+		//System.out.println("Cc : " + mailVo.getCc() + " vo: " + mailVo.getVo() + " Manager_ename: " + mailVo.getManager_ename() + " Receiver: " + mailVo.getReceiver() + " Sender: " + mailVo.getSender() );
 		CubMailSender.makeSendType("RConfirm", mailVo);
 		CubMailSender.send(mailVo);
 	}
+	
 	
 %>
 </body>

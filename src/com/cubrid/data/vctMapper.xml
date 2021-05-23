@@ -64,9 +64,10 @@ WHERE (V.regdate = #{aRegdate} AND V.vct_type='A')
 		DELETE FROM [rvct_confirm] where id = #{id}
 	</delete>
 	
-	<!-- 대체휴가 등록 신청에 대한 관리자의 승인 쿼리1 -->
+	<!-- 대체휴가 등록 신청에 대한 관리자의 승인 쿼리1-->
 	<update id="rvctConfirmY1" parameterType="rVctVo">
-		UPDATE rvct_confirm SET [status] = 'Y' WHERE id = ${id}
+		<!-- UPDATE rvct_confirm SET [status] = 'Y' WHERE id = ${id} -->
+		UPDATE rvct_confirm SET [status] = 'Y', appdate=sysdatetime WHERE id = ${id}
 	</update>
 	
 	<!-- 대체휴가 등록 신청에 대한 관리자의 승인 쿼리2 -->
@@ -82,7 +83,8 @@ WHERE (V.regdate = #{aRegdate} AND V.vct_type='A')
 	
 	<!-- 대체휴가 등록 신청시 관리자가 승인 거절하는 쿼리 -->
 	<update id="rvctConfirmN" parameterType="rVctVo">
-		UPDATE rvct_confirm SET [status] = 'N' WHERE id = ${id}
+		<!-- UPDATE rvct_confirm SET [status] = 'N' WHERE id = ${id} -->
+		UPDATE rvct_confirm SET [status] = 'N', appdate = sysdatetime WHERE id = ${id}
 	</update>
 	
 	<!-- 대체휴가 등록 신청 후 해당 내용을 수정하는 쿼리 -->

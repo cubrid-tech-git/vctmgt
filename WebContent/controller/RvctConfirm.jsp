@@ -39,7 +39,8 @@
 			vctVo.setVctcount(vctVo.getVctcount() + rvctWorkTime);
 			check = vctDao.rvctConfirmY3(vctVo);
 			if(check == 1) {
-				System.out.println(rvctId + " 승인");
+				System.out.println(rvctId + " 승인");	
+				// @@@@@@@@@@대체휴가 승인 테스트@@@@@@@@@@
 				// logging
 				new VctLoggingImpl().rvctRegYNLogging(rvctVo);
 				// mailing
